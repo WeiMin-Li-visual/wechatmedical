@@ -1,0 +1,6 @@
+/* pages/publish/publish.wxss */
+.container image{
+  width: 200rpx;
+  height: 200rpx;
+  padding: 5%;
+}

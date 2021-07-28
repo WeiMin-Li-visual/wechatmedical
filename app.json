@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/redirect/redirect",
+    "pages/publish/publish",
+    "pages/telphone/telphone"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "舌苔诊断"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

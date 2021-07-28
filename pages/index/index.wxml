@@ -1,0 +1,6 @@
+<!--pages/index/index.wxml-->
+
+<view bindtap="clickme" data-nid="123" data-name="me"> 点我跳转</view>
+<view>
+  <text catchtap="click" class="{{color}}">{{hello}}</text>
+</view>

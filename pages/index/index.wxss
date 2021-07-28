@@ -1,0 +1,8 @@
+/* pages/index/index.wxss */
+.c1{
+  color: red;
+}
+
+.c1-bule{
+  color: #00ffff;
+}
