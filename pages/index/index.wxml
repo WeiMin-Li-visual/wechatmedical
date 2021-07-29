@@ -1,6 +1,44 @@
 <!--pages/index/index.wxml-->
-
-<view bindtap="clickme" data-nid="123" data-name="me"> 点我跳转</view>
-<view>
-  <text catchtap="click" class="{{color}}">{{hello}}</text>
+<view hidden='{{boolean}}'>
+	<view wx:if="{{isLogin == 1}}">
+		<!-- 个人信息 -->
+		<view class='infomation'>
+			<!-- 基本信息 -->
+			<view class="gameTitle">
+				<navigator hover-class="none" href=""><image src="{{dataList.head_photo}}"></image></navigator>
+				<view>
+					<view class="gameName"><navigator hover-class="none" href="">{{dataList.username}}</navigator></view>
+					<view class="gameSummary" wx:if="{{dataList.title == ''}}"><navigator hover-class="none" href="">这个玩家很懒，什么也没留下</navigator></view>
+					<view class="gameSummary" wx:if="{{dataList.title != ''}}"><navigator hover-class="none" href="">{{dataList.title}}</navigator></view>
+				</view>
+			</view>
+		</view>
+		<!-- “我的”列表 -->
+		<view class='myList'>
+			<view class='list'>
+			</view>
+		</view> 
+	</view>
+	<view wx:if="{{isLogin == 2}}">
+		<view class='bgBox'>
+		</view>
+		<view class="unLogin">
+		</view>
+	</view>
 </view>
+
+
+
+
+
+
+<view bindtap="tongu" data-nid="1" data-name="me"> 舌诊</view>
+<view bindtap="face" data-nid="2" data-name="me"> 面诊</view>
+<view bindtap="palm" data-nid="3" data-name="me"> 掌诊</view>
+
+
+
+
+<!-- <view>
+  <text catchtap="click" class="{{color}}">{{hello}}</text>
+</view> -->

@@ -4,12 +4,16 @@
     "pages/home/home",
     "pages/redirect/redirect",
     "pages/publish/publish",
-    "pages/telphone/telphone"
+    "pages/telphone/telphone",
+    "pages/tongu/tongu",
+    "pages/face/face",
+    "pages/palm/palm",
+    "pages/login/login"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000000",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "舌苔诊断"
+    "navigationBarTitleText": "中医智慧诊断"
   },
   "tabBar": {
     "list": [

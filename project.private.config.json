@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -11,6 +12,12 @@
     },
     "miniprogram": {
       "list": [
+        {
+          "name": "pages/face/face",
+          "pathName": "pages/face/face",
+          "query": "id=2",
+          "scene": null
+        },
         {
           "name": "pages/telphone/telphone",
           "pathName": "pages/telphone/telphone",

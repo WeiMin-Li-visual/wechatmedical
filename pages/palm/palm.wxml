@@ -1,0 +1,6 @@
+<!--pages/palm/palm.wxml-->
+<text>手掌诊断界面（敬请期待）</text>
+<view >拍照</view>
+<view >相机切换</view>
+<view bindtap="uploadImage">相册</view>
+<view class="container"><image wx:for="{{imagelist}}" src="{{item}}"></image></view>

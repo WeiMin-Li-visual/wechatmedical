@@ -92,4 +92,28 @@ Page({
       url: '/pages/redirect/redirect?id='+nid,
     })
   },
+
+  tongu:function(e){
+    var nid=e.currentTarget.dataset.nid;
+    // 跳转
+    wx.navigateTo({
+      url: '/pages/tongu/tongu?id='+nid,
+    })
+  },
+
+  face:function(e){
+    var nid=e.currentTarget.dataset.nid;
+    // 跳转
+    wx.navigateTo({
+      url: '/pages/face/face?id='+nid,
+    })
+  },
+
+  palm:function(e){
+    var nid=e.currentTarget.dataset.nid;
+    // 跳转
+    wx.navigateTo({
+      url: '/pages/palm/palm?id='+nid,
+    })
+  },
 })
