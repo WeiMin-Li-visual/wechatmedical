@@ -1,8 +1,76 @@
 /* pages/index/index.wxss */
-.c1{
-  color: red;
+.main{font-size:32rpx;font-family:'Microsoft YaHei';color:#555}
+.container {background-color: #F2f2f2;}
+
+.navsec{width:25%;float:left}
+/*轮播*/
+.swiper_box {
+  /*width: 100%;*/
+  height: 390rpx;
+}
+swiper.swiper {
+  height: 100%;
+}
+.swiper-item {
+    display: block;
+    height: 100%;
+}
+.slide-image {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
 }
 
-.c1-bule{
-  color: #00ffff;
+.news {
+  width: 100%;
+  height: auto;
 }
+
+.new {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 60px;
+  border: 1px solid #eaeaea;
+  border-bottom: 1ps solid #d0d0d0;
+  border-radius: 5px;
+  margin: 10px;
+  margin-bottom: 20px;
+  padding: 8px;
+  background-color: white;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+
+/*分类*/
+.unav{background:#fff;height:200rpx;padding:20rpx 0}
+.navlist{float:left;width:25%;margin:auto;text-align:center}
+.navthumb{width:100%;height:120rpx;margin:20rpx auto;}
+.navthumb image{width:120rpx;height:120rpx;}
+.navname{text-align:center;height:39rpx;line-height:39rpx;}
+.utitle{width:100%;height:90rpx;text-align:center;background:#fff;}
+.mtitle{font-size:35rpx;font-weight:bold;color:#000;margin-top:10rpx;}
+.ztitle{font-size:30rpx;color:#999}
+.liw{width: 3px;height: 36rpx;float:left;background-color: #000;margin:30rpx;}
+.tltname{float:left}
+.btnarea{width:100%;background:#fff;}
+.callbtn{width:95%;margin:20rpx auto;}
+.callbtn image{width:60rpx;height:36rpx;}
+.ubom{height:30rpx;background:#eee;}
+.ubom10rpx{clear:both;height:10rpx;}
+.utitle2{width:100%;height:100rpx;line-height:100rpx;background:#fff;border-bottom:1px solid #eee;}
+.umore{width:120rpx;height:45rpx;float:right;margin-right:20rpx;}
+.inner{width:96%;margin:20rpx auto;}
+.introduct{width:100%;background:#fff;padding-bottom:20rpx;}
+.introduct image{width:100%;height:100%;border-radius:12rpx;}
+.pleft{float:left;width:60%;height:350rpx;}
+.pright{float:right;width:38%;height:350rpx;}
+.pright .psmall{width:100%;height:170rpx;}
+.pbig{clear:both;width:100%;height:390rpx;}
+.goods_area{width:100%;margin:auto;background:#fff;margin-bottom:20rpx;}
+.goods_area .goods_list{width:46%;height:270rpx;text-align:center;margin:2%;box-shadow:1rpx 1rpx 1rpx #999;float:left;background:#eee}
+.goods_area .goods_list image{width:94%;height:180rpx;padding:3%}
+.goods_area .goods_list name{width:100%;height:50rpx;text-align:center}
+.telicon{width:120rpx;height:120rpx;position:fixed;bottom:80rpx;right:20rpx;}
+.telicon image{width:120rpx;height:120rpx;}

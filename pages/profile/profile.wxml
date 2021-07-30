@@ -1,0 +1,47 @@
+<!--pages/profile.wxml-->
+<view class="wx-head" style="padding-top:{{statusBarHeight*2}}rpx;">
+  <view class="tool-bar" style="height:{{toolbarHeight}}px">个人中心</view>
+</view>
+<scroll-view scroll-y="true" class="scroll-view"
+  style="height: calc(100% - {{(statusBarHeight + toolbarHeight + 48)*2}}rpx);top:{{statusBarHeight + toolbarHeight}}px"
+  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}"
+  scroll-top="{{scrollTop}}">
+  <view class="info-head-card">
+    <image src="../../image/profile/bg_profile.png"></image>
+    <view class="info">
+      <view class="left">
+        <view class="nickName">{{userInfo.nickName}}</view>
+        <view class="tip">个人信息</view>
+      </view>
+      <view class="right">
+        <image src="{{userInfo.avatarUrl}}"></image>
+      </view>
+    </view>
+
+    <view class="info-main-card">
+      <view class="card-list">
+        <view class="card-item border-1px">
+          <navigator class='content' open-type="navigate" hover-class='none' url="/pages/healthreport/healthreport">
+            <text class='icon-send text-cyan'></text>
+            <text class='text-grey'>健康报告</text>
+          </navigator>
+        </view>
+
+        <view class="card-item border-1px">
+          <navigator class='content' open-type="navigate" hover-class='none' url="/pages/aboutus/aboutus">
+            <text class='icon-vipcard text-green'></text>
+            <text class='text-grey'>关于慧珍</text>
+          </navigator>
+        </view> 
+
+        <view class="card-item border-1px">
+        <button class='cu-btn content' open-type='feedback'>
+            <text class='icon-writefill text-grey'></text>
+            <text class='text-grey'>意见反馈</text>
+        </button>
+    </view>
+        
+      </view>
+    </view>
+  </view>
+</scroll-view>

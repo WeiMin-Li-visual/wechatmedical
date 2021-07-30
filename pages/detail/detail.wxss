@@ -1,0 +1,25 @@
+/* pages/detail/detail.wxss */
+
+/**index.wxss**/
+.main{font-size:32rpx;font-family:'Microsoft YaHei';color:#555}
+.container {
+  padding-top: 30px;
+}
+.ubum10rpx{clear:both;height:10rpx;}
+.inner{width:96%;margin:20rpx auto;}
+.topthumb{width:100%;height:390rpx;}
+.topthumb image{width:100%;height:390rpx;}
+
+.utitle{clear:both;width:100%;height:60rpx;line-height:60rpx;}
+.utitle text{width:100%;padding-left:20rpx;text-align:center;font-size:36rpx;}
+.urow{height:80rpx;}
+.tltarea{height:80rpx;line-height:80rpx;text-indent:20rpx;font-size:35rpx;font-weight:bold;}
+.liy{width: 3px;height: 36rpx;display: inline-block;background-color: #000;}
+.lid{width: 20rpx;height:20rpx;display: inline-block;background-color: #000;margin-right:20rpx;}
+.litit{float:left;width:49%;height:80rpx;line-height:80rpx;text-align:center;border:1px solid #ccc}
+.lival{float:left;width:49%;height:80rpx;line-height:80rpx;text-align:center;border:1px solid #ccc}
+
+.telicon{width:120rpx;height:120rpx;position:fixed;bottom:80rpx;right:20rpx;}
+.telicon image{width:120rpx;height:120rpx;}
+
+.udetail{clear:both;margin-top:20rpx;text-indent:45rpx;}

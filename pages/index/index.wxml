@@ -1,44 +1,68 @@
 <!--pages/index/index.wxml-->
-<view hidden='{{boolean}}'>
-	<view wx:if="{{isLogin == 1}}">
-		<!-- 个人信息 -->
-		<view class='infomation'>
-			<!-- 基本信息 -->
-			<view class="gameTitle">
-				<navigator hover-class="none" href=""><image src="{{dataList.head_photo}}"></image></navigator>
-				<view>
-					<view class="gameName"><navigator hover-class="none" href="">{{dataList.username}}</navigator></view>
-					<view class="gameSummary" wx:if="{{dataList.title == ''}}"><navigator hover-class="none" href="">这个玩家很懒，什么也没留下</navigator></view>
-					<view class="gameSummary" wx:if="{{dataList.title != ''}}"><navigator hover-class="none" href="">{{dataList.title}}</navigator></view>
+
+<view class="main">
+	<view class="container">
+
+		<!--轮播区域-->
+		<view class="section section_gap swiper_box">
+			<swiper class="swiper" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}"
+				interval="{{interval}}" circular="true" duration="{{duration}}">
+				<block wx:for="{{swiperlist}}" wx:key="item.id">
+					<swiper-item >
+						<image src="{{item.url}}" class="slide-image" bindtap="swipclick"/>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+
+
+		<!--宫格功能区域-->
+		<view class="unav">
+			<block wx:for="{{iconList}}">
+				<view id="tapTest" class="navlist" data-hi="{{item.url}}" bindtap="gotopage">
+					<view class="navthumb">
+						<image src="{{item.image}}" mode="scaleToFill"></image>
+					</view>
+					<view class="navname">{{item.text}}</view>
+				</view>
+			</block>
+		</view>
+
+		<view class="ubom"></view>
+		<view class="utitle">
+			<view class="mtitle">健康小知识</view>
+		</view>
+
+		<!-- <view class="introduct">
+			<view class="inner">
+				<navigator class="pleft" url="/pages/detail/detail?id={{healthknos[0].id}}">
+					<image src="{{healthknos[0].adthumb}}" mode="scaleToFill"></image>
+				</navigator>
+				<view class="pright">
+					<navigator class="psmall" url="/pages/detail/detail?id={{healthknos[1].id}}">
+						<image src="{{healthknos[1].adthumb}}" mode="scaleToFill"></image>
+					</navigator>
+					<view class="ubom10rpx"></view>
+					<navigator class="psmall" url="/pages/detail/detail?id={{healthknos[2].id}}">
+						<image src="{{healthknos[2].adthumb}}" mode="scaleToFill"></image>
+					</navigator>
 				</view>
 			</view>
-		</view>
-		<!-- “我的”列表 -->
-		<view class='myList'>
-			<view class='list'>
-			</view>
-		</view> 
-	</view>
-	<view wx:if="{{isLogin == 2}}">
-		<view class='bgBox'>
-		</view>
-		<view class="unLogin">
+		</view> -->
+
+		<view class="news">
+			<block wx:for="{{healthknos}}">
+				<navigator url="/pages/detail/detail?id={{healthknos[0].id}}">
+					<view class="new">
+						<view class="text">
+							<text>{{healthknos[index].name}}</text>
+						</view>
+						<view class="pic">
+							<image src="{{healthknos[index].adthumb}}" style="height: 60px; width: 60px"></image>
+						</view>
+					</view>
+				</navigator>
+			</block>
 		</view>
 	</view>
 </view>
-
-
-
-
-
-
-<view bindtap="tongu" data-nid="1" data-name="me"> 舌诊</view>
-<view bindtap="face" data-nid="2" data-name="me"> 面诊</view>
-<view bindtap="palm" data-nid="3" data-name="me"> 掌诊</view>
-
-
-
-
-<!-- <view>
-  <text catchtap="click" class="{{color}}">{{hello}}</text>
-</view> -->

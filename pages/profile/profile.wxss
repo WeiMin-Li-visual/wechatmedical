@@ -1,0 +1,98 @@
+/* pages/profile.wxss */
+page{
+  height: calc(100%);
+}
+.border-1px{
+  position: relative;
+}
+.border-1px::after{
+  position: absolute;
+  content: "";
+  bottom: 0;
+  height: 2rpx;
+  left: 24rpx;
+  right: 24rpx;
+  border-bottom: 2rpx solid #C7C7C7; 
+  transform-origin: 0 100%;
+  transform: scaleY(.5);
+}
+.wx-head{
+  background: #109cff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  color: #fff;
+}
+.wx-head .tool-bar{
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.scroll-view{
+  position:relative;
+  z-index: 1;
+}
+.info-head-card{
+  position: relative;
+}
+.info-head-card image{
+  width: 100%;
+  height: 240rpx;
+  border-radius: 0 0 60rpx 60rpx;
+}
+.info-head-card .info{
+  left: 40rpx;
+  right: 40rpx;
+  padding: 40rpx 48rpx;
+  box-sizing: border-box;
+  height: 200rpx;
+  background: #fff;
+  position: absolute;
+  top: 120rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 0 10rpx #C7C7C7;
+  display: flex;
+  align-items: center;
+}
+.info-head-card .info .left{
+  flex: 1;
+}
+.info-head-card .info .left .nickName{
+  font-size: 48rpx;
+  font-weight: bold;
+}
+.info-head-card .info .left .tip{
+  color: #666;
+  font-size: 24rpx;
+}
+.info-head-card .info .right{
+  flex: 1;
+  text-align: right;
+}
+.info-head-card .info .right image{
+  width:128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+.info-main-card{
+  position: relative;
+  top: 120rpx;
+  padding: 0 40rpx;
+}
+.info-main-card .card-list{
+  box-shadow: 0 0 10rpx #C7C7C7;
+  border-radius: 24rpx;
+  padding: 10rpx 0;
+}
+
+.info-main-card .card-list .card-item{
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+  padding: 20rpx 24rpx;
+}

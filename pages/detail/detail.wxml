@@ -1,0 +1,23 @@
+<!--pages/detail/detail.wxml-->
+
+<view class="main">
+  <view class="topthumb">
+    <image src="/static/image/healthknos/1.jpg" mode="scaleToFill"></image>
+  </view>
+
+
+  <view class="inner">
+    <view class="utitle">
+      <view class="liy"></view><text>{{healthknos.name}}</text>
+    </view>
+
+    <view class="ubom10rpx"></view>
+    <view class="">
+      <view class="tltarea">
+        <view class="lid"></view><text>课程详情</text>
+      </view>
+      <view class="ubom10rpx"></view>
+      <view class="udetail">{{healthknos.detail}}</view>
+    </view>
+  </view>
+</view>
