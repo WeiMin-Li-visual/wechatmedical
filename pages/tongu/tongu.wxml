@@ -1,6 +1,53 @@
-<!--pages/tongu/tongu.wxml-->
-<text>舌头诊断界面（敬请期待）</text>
-<view >拍照</view>
-<view >相机切换</view>
-<view bindtap="uploadImage">相册</view>
-<view class="container"><image wx:for="{{imagelist}}" src="{{item}}"></image></view>
+<view class="container">
+  <view class="camera_container">
+    <view wx:if="{{authCamera}}" class="camera_wrp">
+      <camera binderror="handleCameraError" device-position="{{devicePosition}}" flash="{{flash}}">
+        <!-- <view>
+          <cover-image class="outline" src="/static/image/outline.jpg"></cover-image>
+        </view> -->
+
+        <cover-image class='bgImage'
+          src='{{isIphoneX==true?"../../myImage/vehicle/biankuang_x.png":"../../myImage/vehicle/biankuang.png"}}'>
+        </cover-image>
+
+        <cover-view class='cameratop-view1'>拍摄舌面照片</cover-view>
+        <!-- <cover-view class='cameratop-view2'>（行驶证主页）</cover-view> -->
+        <!-- <cover-view class='cameracenter-view' style='top:{{isIphoneX==true?"52%":"62%"}}'>请对准左下角发证机关印章</cover-view> -->
+
+
+      </camera>
+    </view>
+
+    <view class="camera_auth" wx:if="{{!authCamera}}">
+      <image class="auth_bg" src="/static/image/profile/bg_profile.png"></image>
+      <navigator url="/pages/cameraauth/cameraauth">点击进行相机授权</navigator>
+      <!-- <button class="auth_btn"  bindtap="getCameraSetting">打开相机授权</button> -->
+    </view>
+  </view>
+
+
+  <!-- <camera binderror="handleCameraError" device-position="{{devicePosition}}" flash="{{flash}}" wx:if="{{authCamera}}">
+    <cover-view >
+      <cover-image class="line" src="/static/image/outline.jpg"></cover-image>
+    </cover-view>
+  </camera> -->
+
+  <view class="menu_container">
+    <view class="menu_content">
+      <navigator bindtap="chooseImage">
+        <view class="album_icon iconfont icon-xiangce"></view>
+        <!-- <view class="his_name">相册选取</view> -->
+      </navigator>
+
+      <navigator bindtap="takePhoto">
+        <view class="photo_icon iconfont icon-paizhao1-copy"></view>
+        <!-- <view class="his_name">拍照</view> -->
+      </navigator>
+
+      <navigator bindtap="reverseCamera">
+        <view class="xuanzhuan_icon iconfont icon-raoxiangjixuanzhuan-copy"></view>
+        <!-- <view class="his_name">相机切换</view> -->
+      </navigator>
+    </view>
+  </view>
+</view>

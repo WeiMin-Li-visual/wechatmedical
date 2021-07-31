@@ -1,0 +1,119 @@
+<!--pages/profile.wxml-->
+
+
+<view class="user_info_wrap">
+  <view wx:if="{{userinfo.avatarUrl}}" class="user_img_wrap">
+    <image class="user_bg" src="{{userinfo.avatarUrl}}"></image>
+    <view class="user_info">
+      <image class="user_icon" src="{{userinfo.avatarUrl}}"></image>
+      <view class="user_name">{{userinfo.nickName}}</view>
+    </view>
+  </view>
+
+  <view wx:else class="user_btn">
+    <navigator url="/pages/index/login/login">登录</navigator>
+  </view>
+</view>
+
+<view class="user_content">
+  <view class="user_main">
+    <!-- 健康报告 -->
+    <navigator url="/pages/healthreport/healthreport">
+      <view class="health_wrap">
+        健康报告
+      </view>
+    </navigator>
+
+    <!-- 应用信息 -->
+    <view class="app_info_wrap">
+      <!-- 联系我们 -->
+      <navigator url="/pages/contactus/contactus">
+        <view class="app_info_itme">
+          <text>联系我们</text>
+        </view>
+      </navigator>
+
+      <!-- 关于我们 -->
+      <navigator url="/pages/aboutus/aboutus">
+        <view class="app_info_itme">
+          <text>关于我们</text>
+        </view>
+      </navigator>
+
+      <!-- -意见反馈 -->
+      <view class="app_info_itme test">
+        <view>意见反馈</view>
+        <button class="recommend_button" open-type="feedback">意见反馈</button>
+      </view>
+
+      <navigator>
+        <view class="app_info_itme">
+          <text>意见反馈</text>
+        </view>
+      </navigator>
+    </view>
+
+    <!-- 分享应用 -->
+    <view class="recommend_wrap test">
+      <view>分享应用</view>
+      <button class="recommend_button" open-type="share">分享应用</button>
+    </view>
+
+
+  </view>
+</view>
+
+
+<!-- <view class="wx-head" style="padding-top:{{statusBarHeight*2}}rpx;">
+  <view class="tool-bar" style="height:{{toolbarHeight}}px">个人中心</view>
+</view>
+
+<scroll-view scroll-y="true" class="scroll-view"
+  style="height: calc(100% - {{(statusBarHeight + toolbarHeight + 48)*2}}rpx);top:{{statusBarHeight + toolbarHeight}}px"
+  bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}"
+  scroll-top="{{scrollTop}}">
+  <view class="info-head-card">
+    <image src="/static/image/profile/bg_profile.png"></image>
+    <view class="info">
+      <view class="left">
+        <view class="nickName">{{userInfo.nickName}}</view>
+        <view class="tip">个人信息</view>
+      </view>
+      <view class="right">
+        <image src="{{userInfo.avatarUrl}}"></image>
+      </view>
+    </view>
+
+    <view class="info-main-card">
+      <view class="card-list">
+        <view class="card-item border-1px">
+          <navigator class='content' open-type="navigate" hover-class='none' url="/pages/healthreport/healthreport">
+            <text class='icon-send text-cyan'></text>
+            <text class='text-grey'>健康报告</text>
+          </navigator>
+        </view>
+
+        <view class="card-item border-1px">
+          <navigator class='content' open-type="navigate" hover-class='none' url="/pages/aboutus/aboutus">
+            <text class='icon-vipcard text-green'></text>
+            <text class='text-grey'>关于慧珍</text>
+          </navigator>
+        </view>
+
+        <view class="card-item border-1px">
+          <button class='cu-btn content' open-type='feedback'>
+              <text class='icon-writefill text-grey'></text>
+              <text class='text-grey'>意见反馈</text>
+            </button>
+        </view>
+
+        <view class="card-item border-1px">
+          <navigator class='content' open-type="navigate" hover-class='none' url="/pages/index/login/login">
+            <text class='icon-send text-cyan'></text>
+            <text class='text-grey'>登录</text>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view> -->

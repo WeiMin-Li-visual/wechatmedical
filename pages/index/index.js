@@ -18,6 +18,10 @@ Page({
     current: 0,
     lines: 0,
 
+    userInfo: app.globalData.userInfo,
+    hasUserInfo: app.globalData.hasUserInfo,
+    canIUseGetUserProfile: app.globalData.canIUseGetUserProfile,
+
     // 轮播
     swiperlist: [{
       id: 0,
@@ -79,7 +83,6 @@ Page({
     }
   },
 
-
   gotopage: function (event) {
     wx.reLaunch({
       url: event.currentTarget.dataset.hi
@@ -91,7 +94,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    console.log(config.healthknos);
     that.setData({
       healthknos: config.healthknos
     });

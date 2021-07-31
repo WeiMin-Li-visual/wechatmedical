@@ -1,5 +1,4 @@
 <!--pages/index/index.wxml-->
-
 <view class="main">
 	<view class="container">
 
@@ -7,18 +6,17 @@
 		<view class="section section_gap swiper_box">
 			<swiper class="swiper" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}"
 				interval="{{interval}}" circular="true" duration="{{duration}}">
-				<block wx:for="{{swiperlist}}" wx:key="item.id">
-					<swiper-item >
-						<image src="{{item.url}}" class="slide-image" bindtap="swipclick"/>
+				<block wx:for="{{swiperlist}}" wx:key="id">
+					<swiper-item>
+						<image src="{{item.url}}" class="slide-image" bindtap="swipclick" />
 					</swiper-item>
 				</block>
 			</swiper>
 		</view>
 
-
 		<!--宫格功能区域-->
 		<view class="unav">
-			<block wx:for="{{iconList}}">
+			<block wx:for="{{iconList}}" wx:key="id">
 				<view id="tapTest" class="navlist" data-hi="{{item.url}}" bindtap="gotopage">
 					<view class="navthumb">
 						<image src="{{item.image}}" mode="scaleToFill"></image>
@@ -33,25 +31,8 @@
 			<view class="mtitle">健康小知识</view>
 		</view>
 
-		<!-- <view class="introduct">
-			<view class="inner">
-				<navigator class="pleft" url="/pages/detail/detail?id={{healthknos[0].id}}">
-					<image src="{{healthknos[0].adthumb}}" mode="scaleToFill"></image>
-				</navigator>
-				<view class="pright">
-					<navigator class="psmall" url="/pages/detail/detail?id={{healthknos[1].id}}">
-						<image src="{{healthknos[1].adthumb}}" mode="scaleToFill"></image>
-					</navigator>
-					<view class="ubom10rpx"></view>
-					<navigator class="psmall" url="/pages/detail/detail?id={{healthknos[2].id}}">
-						<image src="{{healthknos[2].adthumb}}" mode="scaleToFill"></image>
-					</navigator>
-				</view>
-			</view>
-		</view> -->
-
 		<view class="news">
-			<block wx:for="{{healthknos}}">
+			<block wx:for="{{healthknos}}" wx:key="id">
 				<navigator url="/pages/detail/detail?id={{healthknos[0].id}}">
 					<view class="new">
 						<view class="text">

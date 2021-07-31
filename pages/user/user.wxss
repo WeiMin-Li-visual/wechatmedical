@@ -1,0 +1,234 @@
+/* pages/profile.wxss */
+page {
+  height: calc(100%);
+  background-color: #edece8;
+}
+
+.user_info_wrap {
+  height: 40vh;
+  width: 100%;
+  /* 超出区域就截取 */
+  overflow: hidden;
+  background-color: #109cff;
+  position: relative;
+}
+
+.user_img_wrap {
+  width: 100%;
+  position: relative;
+}
+
+.user_bg {
+  width: 100%;
+  height: 42vh;
+  /* 高斯模糊 */
+  filter: blur(5rpx);
+}
+
+.user_info {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+  text-align: center;
+}
+
+.user_icon {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+}
+
+.user_name {
+  color: #ffffff;
+  margin-top: 40rpx;
+  font-size: 40rpx;
+}
+
+.user_btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40%;
+  border: 1rox solid greenyellow;
+  color: greenyellow;
+  font-size: 40rpx;
+  padding: 30rpx;
+  border-radius: 10rpx;
+}
+
+.user_content{
+  position: relative;
+}
+
+.user_main{
+  position: absolute;
+  width: 90%;
+  left: 50%;
+  transform: translateX(-50%);
+  top:50rpx;
+}
+
+.health_wrap{
+  margin-top: 30rpx;
+  background-color: #ffff;
+  padding: 20rpx;
+}
+
+.app_info_wrap{
+  position: relative;
+  margin-top: 30rpx;
+  background-color: #ffff;
+}
+
+.app_info_itme{
+  padding: 20rpx;
+  border-bottom: 1px solid #ccc;
+}
+
+.test {
+  width: 100%;
+  position: absolute;
+  box-sizing: border-box
+}
+
+.recommend_wrap{
+  margin-top: 30rpx;
+  background-color: #ffff;
+  padding: 20rpx;
+}
+
+.test .recommend_button{
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.feedback_button::after{
+  border: none;
+  background-color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.border-1px {
+  position: relative;
+}
+
+.border-1px::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  height: 2rpx;
+  left: 24rpx;
+  right: 24rpx;
+  border-bottom: 2rpx solid #C7C7C7;
+  transform-origin: 0 100%;
+  transform: scaleY(.5);
+}
+
+.wx-head {
+  background: #109cff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  color: #fff;
+}
+
+.wx-head .tool-bar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.scroll-view {
+  position: relative;
+  z-index: 1;
+}
+
+.info-head-card {
+  position: relative;
+}
+
+.info-head-card image {
+  width: 100%;
+  height: 240rpx;
+  border-radius: 0 0 60rpx 60rpx;
+}
+
+.info-head-card .info {
+  left: 40rpx;
+  right: 40rpx;
+  padding: 40rpx 48rpx;
+  box-sizing: border-box;
+  height: 200rpx;
+  background: #fff;
+  position: absolute;
+  top: 120rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 0 10rpx #C7C7C7;
+  display: flex;
+  align-items: center;
+}
+
+.info-head-card .info .left {
+  flex: 1;
+}
+
+.info-head-card .info .left .nickName {
+  font-size: 48rpx;
+  font-weight: bold;
+}
+
+.info-head-card .info .left .tip {
+  color: #666;
+  font-size: 24rpx;
+}
+
+.info-head-card .info .right {
+  flex: 1;
+  text-align: right;
+}
+
+.info-head-card .info .right image {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+
+.info-main-card {
+  position: relative;
+  top: 120rpx;
+  padding: 0 40rpx;
+}
+
+.info-main-card .card-list {
+  box-shadow: 0 0 10rpx #C7C7C7;
+  border-radius: 24rpx;
+  padding: 10rpx 0;
+}
+
+.info-main-card .card-list .card-item {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+  padding: 20rpx 24rpx;
+}

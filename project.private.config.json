@@ -13,20 +13,32 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/face/face",
+          "name": "面诊",
           "pathName": "pages/face/face",
           "query": "id=2",
           "scene": null
         },
         {
-          "name": "pages/telphone/telphone",
-          "pathName": "pages/telphone/telphone",
+          "name": "登录",
+          "pathName": "pages/index/login/login",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/home/home",
-          "pathName": "pages/home/home",
+          "name": "个人中心",
+          "pathName": "pages/user/user",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "意见反馈",
+          "pathName": "pages/feedback/feedback",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "舌诊",
+          "pathName": "pages/tongu/tongu",
           "query": "",
           "scene": null
         }

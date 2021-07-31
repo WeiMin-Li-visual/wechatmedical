@@ -1,19 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/home/home",
-    "pages/redirect/redirect",
-    "pages/publish/publish",
-    "pages/telphone/telphone",
+    "pages/index/login/login",
     "pages/tongu/tongu",
     "pages/face/face",
     "pages/palm/palm",
-    "pages/login/login",
     "pages/healthreport/healthreport",
     "pages/detail/detail",
     "pages/index/doc/doc",
-    "pages/profile/profile",
-    "pages/aboutus/aboutus"
+    "pages/aboutus/aboutus",
+    "pages/user/user",
+    "pages/feedback/feedback",
+    "pages/contactus/contactus",
+    "pages/cameraauth/cameraauth"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000000",
@@ -38,7 +37,7 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/profile/profile",
+        "pagePath": "pages/user/user",
         "iconPath": "/static/image/icon_API.png",
         "selectedIconPath": "/static/image/icon_API_HL.png",
         "text": "我的"
