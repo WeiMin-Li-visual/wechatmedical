@@ -41,6 +41,12 @@
           "pathName": "pages/tongu/tongu",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "关于我们",
+          "pathName": "pages/aboutus/aboutus",
+          "query": "",
+          "scene": null
         }
       ]
     }

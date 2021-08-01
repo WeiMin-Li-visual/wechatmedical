@@ -3,7 +3,7 @@ Page({
   data: {
     // imagelist: [],
     image_src: '',
-    devicePosition: 'back', // 相机前后置
+    devicePosition: 'front', // 相机前后置
     authCamera: false, //用户是否运行授权拍照  
     flash: false, // 闪光灯，默认关闭
   },

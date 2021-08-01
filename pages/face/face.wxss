@@ -1,1 +1,140 @@
-/* pages/face/face.wxss */
+/* pages/tongu/tongu.wxss */
+
+page {
+  height: calc(100%);
+  background-color: #edece8;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.camera_container {
+  height: 85vh;
+  width: 100%;
+  /* 超出区域就截取 */
+  overflow: hidden;
+  background-color: #109cff;
+  position: relative;
+}
+
+.camera_wrp {
+  width: 100%;
+  height: 85vh;
+  position: absolute;
+}
+
+camera {
+  flex: 1;
+  width: 100%;
+  height: 85vh;
+  position: absolute;
+}
+
+.outline {
+  flex: 1;
+  width: 100%;
+  height: 85vh;
+  position: absolute;
+}
+
+.cover_view{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.bgImage{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+ 
+.cover_text{
+  
+  margin-top: 150rpx;
+  color: #ffff;
+  font-size: 50rpx;
+}
+
+
+.cameratop-view2{
+  margin-top: 220rpx;
+}
+.cameratop-view1, .cameratop-view2{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+ 
+  font-family: PingFangSC-Medium;
+  font-size: 36rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+}
+ 
+.cameracenter-view{
+  height: 44rpx;
+  width: 100%;
+  position: absolute;
+ 
+  font-family: PingFangSC-Medium;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+
+
+
+
+
+.auth_btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40%;
+  border: 1rox solid greenyellow;
+  color: greenyellow;
+  font-size: 40rpx;
+  padding: 30rpx;
+  border-radius: 10rpx;
+}
+
+.menu_container {
+  position: relative;
+  flex: 1;
+}
+
+.menu_content {
+  background-color: #fff;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+navigator {
+  flex: 1;
+  text-align: center;
+}
+
+.album_icon {
+  font-size: 70rpx;
+  color: #109cff;
+}
+
+.photo_icon {
+  font-size: 130rpx;
+  color: #109cff;
+}
+
+.xuanzhuan_icon {
+  font-size: 75rpx;
+  color: #109cff;
+}

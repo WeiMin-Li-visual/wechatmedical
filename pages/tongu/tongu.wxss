@@ -40,6 +40,13 @@ camera {
   position: absolute;
 }
 
+.cover_view{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
 
 .bgImage{
   width: 100%;
@@ -47,10 +54,13 @@ camera {
   position: absolute;
 }
  
-.cameratop-view1{
-  margin-top: 174rpx;
+.cover_text{
+  
+  margin-top: 150rpx;
+  color: #ffff;
   font-size: 50rpx;
 }
+
 
 .cameratop-view2{
   margin-top: 220rpx;

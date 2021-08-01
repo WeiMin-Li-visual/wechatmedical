@@ -2,19 +2,10 @@
   <view class="camera_container">
     <view wx:if="{{authCamera}}" class="camera_wrp">
       <camera binderror="handleCameraError" device-position="{{devicePosition}}" flash="{{flash}}">
-        <!-- <view>
-          <cover-image class="outline" src="/static/image/outline.jpg"></cover-image>
-        </view> -->
-
-        <cover-image class='bgImage'
-          src='{{isIphoneX==true?"../../myImage/vehicle/biankuang_x.png":"../../myImage/vehicle/biankuang.png"}}'>
-        </cover-image>
-
-        <cover-view class='cameratop-view1'>拍摄舌面照片</cover-view>
-        <!-- <cover-view class='cameratop-view2'>（行驶证主页）</cover-view> -->
-        <!-- <cover-view class='cameracenter-view' style='top:{{isIphoneX==true?"52%":"62%"}}'>请对准左下角发证机关印章</cover-view> -->
-
-
+        <view class='cover_view'>
+          <!-- <image class="outline" src="/static/image/outline.jpg"></image> -->
+          <view class='cover_text'>拍摄舌面照片</view>
+        </view>
       </camera>
     </view>
 

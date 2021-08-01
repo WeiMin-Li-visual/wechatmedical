@@ -10,7 +10,6 @@
     "pages/index/doc/doc",
     "pages/aboutus/aboutus",
     "pages/user/user",
-    "pages/feedback/feedback",
     "pages/contactus/contactus",
     "pages/cameraauth/cameraauth"
   ],
