@@ -1,23 +1,15 @@
-/* pages/cameraauth/cameraauth.wxss */
-.button{
-  margin-top: 80rpx;
-  width: 70%;
-}
-.userinfo {
-  display: flex;
+.container{
   flex-direction: column;
   align-items: center;
+}
+
+.camerainfo {
+  top: 30%;
   color: #aaa;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+button{
+  margin-top: 80rpx;
+  width: 50%;
 }
 
-.usermotto {
-  margin-top: 200px;
-}

@@ -47,6 +47,18 @@
           "pathName": "pages/aboutus/aboutus",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "联系我们",
+          "pathName": "pages/contactus/contactus",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "舌诊报告",
+          "pathName": "pages/tongureport/tongureport",
+          "query": "",
+          "scene": null
         }
       ]
     }

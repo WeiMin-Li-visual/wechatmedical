@@ -1,22 +1,11 @@
 /**index.wxss**/
 .main {
   font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: 'Microsoft YaHei';
   color: #555
-}
-
-.container {
-  padding-top: 30px;
-}
-
-.topthumb {
-  width: 100%;
-  height: 390rpx;
-}
-
-.topthumb image {
-  width: 100%;
-  height: 390rpx;
 }
 
 .utitle {
@@ -34,37 +23,8 @@
   padding: 20rpx;
 }
 
-.ztitle {
-  font-size: 30rpx;
-  color: #999
-}
-
-.liw {
-  width: 3px;
-  height: 18px;
-  display: inline-block;
-  background-color: #000;
-}
-
-view.text {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding: 10px 10px 10px 12px;
-  font-size: 15px;
-  color: #656565;
-  background-color: #ccc;
-}
-
-view.text text {
-  margin-left: 10px;
-  line-height: 18px;
-
-}
-
-view.text2 {
+.text {
   text-indent: 40rpx;
-  align-items: center;
   position: relative;
   padding: 10px 10px 10px 12px;
   font-size: 30rpx;
@@ -72,30 +32,7 @@ view.text2 {
   color: #656565;
 }
 
-view.text3 {
-  width: 92%;
-  margin: auto;
-  line-height: 50rpx;
-  align-items: center;
-  position: relative;
-  font-size: 30rpx;
-  color: #656565;
-}
-
-.qrcode {
-  width: 100%;
-  margin: 30rpx auto
-}
-
-.telicon {
-  width: 120rpx;
-  height: 120rpx;
-  position: fixed;
-  bottom: 80rpx;
-  right: 20rpx;
-}
-
-.telicon image {
-  width: 120rpx;
-  height: 120rpx;
+.image {
+  width: 500rpx;
+  height: 500rpx;
 }

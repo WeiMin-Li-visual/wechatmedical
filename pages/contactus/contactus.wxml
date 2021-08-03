@@ -3,7 +3,8 @@
 	<view class="utitle">
 		<view class="mtitle">慧诊AI中医辅疗系统</view>
 	</view>
-	<view class="text2">
-		慧诊AI中医辅疗系统是由上海大学李卫民教授课题组开发的一款用于中医辅助诊疗的微信小程序。小程序主要的功能为舌诊、面诊和掌诊等中医辅助诊疗工具，用户可以通过手机随时查看自己的健康状况。
+	<view class="text">
+		慧诊AI中医辅疗系统是由上海大学李卫民教授课题组开发的一款用于中医辅助诊疗的微信小程序。小程序主要的功能为舌诊、面诊和掌诊等中医辅助诊疗工具，用户可以通过手机随时查看自己的健康状况。有任何问题都可以与我们联系。
 	</view>
+	<image class="image" src="/static/image/contact.jpg" ></image>
 </view>

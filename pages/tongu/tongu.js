@@ -1,11 +1,28 @@
-// pages/tongu/tongu.js
+//获取应用实例
+var app = getApp();
+
 Page({
   data: {
-    // imagelist: [],
     image_src: '',
     devicePosition: 'front', // 相机前后置
     authCamera: false, //用户是否运行授权拍照  
     flash: false, // 闪光灯，默认关闭
+    
+    upload_status: ""
+  },
+
+  closeModel: function () {
+    var that = this
+    that.setData({
+      mHidden: true
+    });
+  },
+
+  confirmModel: function () {
+    var that = this
+    that.setData({
+      mHidden: true
+    });
   },
 
   // 用户拒绝使用相机时触发的事件
@@ -26,7 +43,9 @@ Page({
 
   //拍摄照片  
   takePhoto: function () {
-    console.log("000");
+    
+    var that = this;
+    console.log("count",that.data.count)
     wx.createCameraContext().takePhoto({
       quality: 'high', //拍摄质量(high:高质量 normal:普通质量 low:高质量)  
       success: (res) => {
@@ -35,22 +54,45 @@ Page({
 
         //上传图片到服务器  
         var pic = res.tempImagePath;
-        console.log(pic);
         wx.uploadFile({
           url: 'http://127.0.0.1:5000/uploadImage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
-            console.log(e)
+            console.log("e",e)
+            console.log(pic)
+            // upload_status="上传成功"
+            app.globalData.tonguimagelist = that.data.tonguimagelist.concat(pic) // 保存图片
+
+            if (that.data.count== 0) {
+              app.globalData.tongucount = 1
+              wx.navigateTo({
+                url: '/pages/tongu/tongu',
+              })
+            }
+            else if(that.data.count==1){
+              app.globalData.tongucount = 0
+              wx.navigateTo({
+                url: '/pages/tongu/tongu',   // 这里跳转到结果界面
+              })
+            }
+            
+            app.globalData.tongumHidden = true
+          
           },
           fail: function (t) {
             //上传失败  
-            console.log(t)
+            upload_status = "上传失败"
+            mHidden = true
+            app.globalData.tongucount = 0
           },
         })
       },
       fail: (res) => {
         //拍摄失败  
+        upload_status = "拍照失败，请重新拍摄"
+        mHidden = true
+        app.globalData.tongucount = 0
       },
     })
   },
@@ -115,15 +157,20 @@ Page({
   },
 
   onShow: function () {
+    this.setData({
+      tonguimagelist: app.globalData.tonguimagelist, // 保存用户拍的两张照片
+      count: app.globalData.tongucount,
+      mHidden: app.globalData.tongumHidden, // 拍照提示是否隐藏
+    })
     wx.getSetting({
       success: (res) => {
         if (res.authSetting["scope.camera"]) {
-          console.log("111")
+
           this.setData({
             authCamera: true,
           })
         } else {
-          console.log("222")
+
           this.setData({
             authCamera: false,
           })
@@ -147,7 +194,7 @@ Page({
           filePath: String(pic),
           name: 'image',
           success: function (e) {
-            console.log(e)
+
           }
         })
 
@@ -183,9 +230,11 @@ Page({
       url: 'http://127.0.0.1:5000/uploadImage',
       filePath: String(pic),
       name: 'image',
-      success: function (e) {
-        console.log(e)
-      }
+      success: function (e) {}
     })
+  },
+
+  onReady: function () {
+
   }
 })

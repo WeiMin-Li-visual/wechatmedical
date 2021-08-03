@@ -5,6 +5,15 @@ page {
   background-color: #edece8;
 }
 
+.notice_image{
+  width: 100%;
+  height: 400rpx;
+}
+
+.notice_text{
+  color: #ff0000;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -48,51 +57,11 @@ camera {
   justify-content: center;
 }
 
-.bgImage{
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
- 
 .cover_text{
-  
   margin-top: 150rpx;
   color: #ffff;
   font-size: 50rpx;
 }
-
-
-.cameratop-view2{
-  margin-top: 220rpx;
-}
-.cameratop-view1, .cameratop-view2{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  position: absolute;
- 
-  font-family: PingFangSC-Medium;
-  font-size: 36rpx;
-  color: #FFFFFF;
-  letter-spacing: 0;
-  text-align: center;
-}
- 
-.cameracenter-view{
-  height: 44rpx;
-  width: 100%;
-  position: absolute;
- 
-  font-family: PingFangSC-Medium;
-  font-size: 32rpx;
-  color: #FFFFFF;
-  letter-spacing: 0;
-  text-align: center;
-}
-
-
-
-
 
 
 .auth_btn {

@@ -1,4 +1,4 @@
-/**index.wxss**/
+
 .main {
   font-size: 32rpx;
   font-family: 'Microsoft YaHei';
@@ -21,24 +21,7 @@
 }
 
 
-
-view.text {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding: 10px 10px 10px 12px;
-  font-size: 15px;
-  color: #656565;
-  background-color: #ccc;
-}
-
-view.text text {
-  margin-left: 10px;
-  line-height: 18px;
-
-}
-
-view.text2 {
+.text {
   text-indent: 40rpx;
   align-items: center;
   position: relative;
@@ -46,32 +29,4 @@ view.text2 {
   font-size: 30rpx;
   line-height: 50rpx;
   color: #656565;
-}
-
-view.text3 {
-  width: 92%;
-  margin: auto;
-  line-height: 50rpx;
-  align-items: center;
-  position: relative;
-  font-size: 30rpx;
-  color: #656565;
-}
-
-.qrcode {
-  width: 100%;
-  margin: 30rpx auto
-}
-
-.telicon {
-  width: 120rpx;
-  height: 120rpx;
-  position: fixed;
-  bottom: 80rpx;
-  right: 20rpx;
-}
-
-.telicon image {
-  width: 120rpx;
-  height: 120rpx;
 }

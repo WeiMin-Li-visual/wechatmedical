@@ -8,7 +8,9 @@
 				interval="{{interval}}" circular="true" duration="{{duration}}">
 				<block wx:for="{{swiperlist}}" wx:key="id">
 					<swiper-item>
-						<image src="{{item.url}}" class="slide-image" bindtap="swipclick" />
+						<navigator url="/pages/hotNews/hotNews?id={{swiperlist[index].id}}" class="slide-navigator">
+							<image src="{{swiperlist[index].adthumb}}" class="slide-image" />
+						</navigator>
 					</swiper-item>
 				</block>
 			</swiper>
@@ -17,7 +19,7 @@
 		<!--宫格功能区域-->
 		<view class="unav">
 			<block wx:for="{{iconList}}" wx:key="id">
-				<view id="tapTest" class="navlist" data-hi="{{item.url}}" bindtap="gotopage">
+				<view id="tapTest" class="navlist" data-url="{{item.url}}" bindtap="gotopage">
 					<view class="navthumb">
 						<image src="{{item.image}}" mode="scaleToFill"></image>
 					</view>
@@ -26,17 +28,21 @@
 			</block>
 		</view>
 
-		<view class="ubom"></view>
 		<view class="utitle">
 			<view class="mtitle">健康小知识</view>
 		</view>
 
 		<view class="news">
 			<block wx:for="{{healthknos}}" wx:key="id">
-				<navigator url="/pages/detail/detail?id={{healthknos[0].id}}">
+				<navigator url="/pages/detail/detail?id={{healthknos[index].id}}">
 					<view class="new">
-						<view class="text">
-							<text>{{healthknos[index].name}}</text>
+						<view class="new_detail">
+							<view class="new_title">
+								<text>{{healthknos[index].name}}</text>
+							</view>
+							<view class="new_view">
+								<text>{{healthknos[index].detail_title}}</text>
+							</view>
 						</view>
 						<view class="pic">
 							<image src="{{healthknos[index].adthumb}}" style="height: 60px; width: 60px"></image>

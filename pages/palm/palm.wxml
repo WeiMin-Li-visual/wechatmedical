@@ -1,9 +1,20 @@
+<!-- 页面弹窗 -->
+<view>
+  <modal title="拍摄注意事项" cancel-text="关闭" hidden="{{mHidden}}" confirm-text="确定" bindconfirm="confirmModel" bindcancel="closeModel">
+    <view>
+      <image class="notice_image" src="/static/image/notice_palm.jpg">
+      </image>
+      <view class="notice_text">注意：将手掌完全打开，光线充足</view>
+    </view>
+  </modal>
+</view>
+
 <view class="container">
   <view class="camera_container">
     <view wx:if="{{authCamera}}" class="camera_wrp">
       <camera binderror="handleCameraError" device-position="{{devicePosition}}" flash="{{flash}}">
         <view class='cover_view'>
-          <!-- <image class="outline" src="/static/image/outline.jpg"></image> -->
+          <image class="outline" src="/static/image/outline/left_palm.png"></image>
           <view class='cover_text'>拍摄手掌照片</view>
         </view>
       </camera>
@@ -16,12 +27,6 @@
     </view>
   </view>
 
-
-  <!-- <camera binderror="handleCameraError" device-position="{{devicePosition}}" flash="{{flash}}" wx:if="{{authCamera}}">
-    <cover-view >
-      <cover-image class="line" src="/static/image/outline.jpg"></cover-image>
-    </cover-view>
-  </camera> -->
 
   <view class="menu_container">
     <view class="menu_content">

@@ -12,7 +12,6 @@ Page({
     }
   },
 
-
   getUserProfile(e) {
     if (!wx.getStorageSync('userinfo')) {
       wx.getUserProfile({

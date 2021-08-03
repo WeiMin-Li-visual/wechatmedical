@@ -7,11 +7,12 @@
     "pages/palm/palm",
     "pages/healthreport/healthreport",
     "pages/detail/detail",
-    "pages/index/doc/doc",
     "pages/aboutus/aboutus",
     "pages/user/user",
     "pages/contactus/contactus",
-    "pages/cameraauth/cameraauth"
+    "pages/cameraauth/cameraauth",
+    "pages/hotNews/hotNews",
+    "pages/tongureport/tongureport"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000000",

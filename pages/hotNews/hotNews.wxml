@@ -1,0 +1,14 @@
+<view class="main">
+  <view class="topthumb">
+    <image src="{{swiperlist.thumb}}" mode="scaleToFill"></image>
+  </view>
+  <view class="inner">
+    <view class="utitle">
+      <view class="liy"></view><text>{{swiperlist.name}}</text>
+    </view>
+    <view class="">
+      <view class="udetail">{{swiperlist.detail}}</view>
+    </view>
+  </view>
+</view>
+
