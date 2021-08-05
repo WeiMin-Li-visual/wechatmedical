@@ -22,8 +22,8 @@ Page({
 
     iconList: [{
       id: 1,
-      url: '/pages/tongu/tongu',
-      image: '/static/image/tongu.png',
+      url: '/pages/tongue/tongue',
+      image: '/static/image/tongue.png',
       text: '舌诊'
     }, {
       id: 2,

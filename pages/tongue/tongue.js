@@ -58,30 +58,57 @@ Page({
         //上传图片到服务器  
         var pic = res.tempImagePath;
         wx.uploadFile({
-          url: 'http://127.0.0.1:5000/face/uploadimage',
+          url: 'http://127.0.0.1:5000/tongue/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
-            app.globalData.faceimagelist = that.data.faceimagelist.concat(pic) // 保存图片
-            var report = JSON.parse(e.data)
-            app.globalData.facefeature[0] = that.data.facefeature[0].concat(report["face_color"])
-            wx.navigateTo({
-              url: '/pages/facereport/facereport', // 这里跳转到结果界面
-            })
+            app.globalData.tongueimagelist = that.data.tongueimagelist.concat(pic) // 保存图片
+            if (that.data.count == 0) {
+              app.globalData.tonguecount = 1
+              var report = JSON.parse(e.data)
+              app.globalData.tonguefeature[0] = that.data.tonguefeature[0].concat(report["tongue_proper_color"])
+              app.globalData.tonguefeature[1] = that.data.tonguefeature[1].concat(report["tongue_shape_pang"])
+              app.globalData.tonguefeature[2] = that.data.tonguefeature[2].concat(report["tongue_shape_neng"])
+              app.globalData.tonguefeature[3] = that.data.tonguefeature[3].concat(report["tongue_shape_chi"])
+              app.globalData.tonguefeature[4] = that.data.tonguefeature[4].concat(report["tongue_moss_color"])
+              app.globalData.tonguefeature[5] = that.data.tonguefeature[5].concat(report["tongue_moss_nature"])
+              wx.navigateTo({
+                url: '/pages/tongue/tongue',
+              })
+            }
+            // 分析结果并跳转到结果界面
+            else if (that.data.count == 1) {
+              var report = JSON.parse(e.data)
+              app.globalData.tonguefeature[0] = that.data.tonguefeature[0].concat(report["tongue_proper_color"])
+              app.globalData.tonguefeature[1] = that.data.tonguefeature[1].concat(report["tongue_shape_pang"])
+              app.globalData.tonguefeature[2] = that.data.tonguefeature[2].concat(report["tongue_shape_neng"])
+              app.globalData.tonguefeature[3] = that.data.tonguefeature[3].concat(report["tongue_shape_chi"])
+              app.globalData.tonguefeature[4] = that.data.tonguefeature[4].concat(report["tongue_moss_color"])
+              app.globalData.tonguefeature[5] = that.data.tonguefeature[5].concat(report["tongue_moss_nature"])
+
+              app.globalData.tonguecount = 0
+              wx.navigateTo({
+                url: '/pages/tonguereport/tonguereport', // 这里跳转到结果界面
+              })
+            }
+
             that.setData({
               upload_hidden: false,
               mHidden: true
             })
-            app.globalData.facemHidden = true
+
+            app.globalData.tonguemHidden = true
           },
           fail: function (t) {
             that.setData({
               //上传失败  
               upload_status: "上传失败",
               mHidden: true
+
             })
-            app.globalData.facemHidden = true
-            app.globalData.facecount = 0
+
+            app.globalData.tonguemHidden = true
+            app.globalData.tonguecount = 0
           },
         })
       },
@@ -92,8 +119,8 @@ Page({
           mHidden: true
 
         })
-        app.globalData.facemHidden = true
-        app.globalData.facecount = 0
+        app.globalData.tonguemHidden = true
+        app.globalData.tonguecount = 0
       },
     })
   },
@@ -117,24 +144,46 @@ Page({
         var pic = res.tempFilePaths[0];
         console.log(pic)
         wx.uploadFile({
-          url: 'http://127.0.0.1:5000/face/uploadimage',
+          url: 'http://127.0.0.1:5000/tongue/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
-            app.globalData.faceimagelist = that.data.faceimagelist.concat(pic) // 保存图片
+            app.globalData.tongueimagelist = that.data.tongueimagelist.concat(pic) // 保存图片
             if (that.data.count == 0) {
-              app.globalData.facecount = 1
+              app.globalData.tonguecount = 1
               var report = JSON.parse(e.data)
-              app.globalData.facefeature[0] = that.data.facefeature[0].concat(report["face_color"])
+              app.globalData.tonguefeature[0] = that.data.tonguefeature[0].concat(report["tongue_proper_color"])
+              app.globalData.tonguefeature[1] = that.data.tonguefeature[1].concat(report["tongue_shape_pang"])
+              app.globalData.tonguefeature[2] = that.data.tonguefeature[2].concat(report["tongue_shape_neng"])
+              app.globalData.tonguefeature[3] = that.data.tonguefeature[3].concat(report["tongue_shape_chi"])
+              app.globalData.tonguefeature[4] = that.data.tonguefeature[4].concat(report["tongue_moss_color"])
+              app.globalData.tonguefeature[5] = that.data.tonguefeature[5].concat(report["tongue_moss_nature"])
               wx.navigateTo({
-                url: '/pages/facereport/facereport', // 这里跳转到结果界面
+                url: '/pages/tongue/tongue',
               })
             }
+            // 分析结果并跳转到结果界面
+            else if (that.data.count == 1) {
+              var report = JSON.parse(e.data)
+              app.globalData.tonguefeature[0] = that.data.tonguefeature[0].concat(report["tongue_proper_color"])
+              app.globalData.tonguefeature[1] = that.data.tonguefeature[1].concat(report["tongue_shape_pang"])
+              app.globalData.tonguefeature[2] = that.data.tonguefeature[2].concat(report["tongue_shape_neng"])
+              app.globalData.tonguefeature[3] = that.data.tonguefeature[3].concat(report["tongue_shape_chi"])
+              app.globalData.tonguefeature[4] = that.data.tonguefeature[4].concat(report["tongue_moss_color"])
+              app.globalData.tonguefeature[5] = that.data.tonguefeature[5].concat(report["tongue_moss_nature"])
+
+              app.globalData.tonguecount = 0
+              wx.navigateTo({
+                url: '/pages/tonguereport/tonguereport', // 这里跳转到结果界面
+              })
+            }
+
             that.setData({
               mHidden: true,
               upload_hidden: false
             })
-            app.globalData.facemHidden = true
+
+            app.globalData.tonguemHidden = true
           },
           fail: function (t) {
             that.setData({
@@ -142,8 +191,9 @@ Page({
               upload_status: "上传失败",
               mHidden: true
             })
-            app.globalData.facemHidden = true
-            app.globalData.facecount = 0
+
+            app.globalData.tonguemHidden = true
+            app.globalData.tonguecount = 0
           },
         })
       },
@@ -153,8 +203,8 @@ Page({
           upload_status: "拍照失败，请重新拍摄",
           mHidden: true
         })
-        app.globalData.facemHidden = true
-        app.globalData.facecount = 0
+        app.globalData.tonguemHidden = true
+        app.globalData.tonguecount = 0
       },
     })
   },
@@ -221,10 +271,10 @@ Page({
 
   onShow: function () {
     this.setData({
-      faceimagelist: app.globalData.faceimagelist, // 保存用户拍的两张照片
-      count: app.globalData.facecount,
-      mHidden: app.globalData.facemHidden, // 拍照提示是否隐藏
-      facefeature: app.globalData.facefeature
+      tongueimagelist: app.globalData.tongueimagelist, // 保存用户拍的两张照片
+      count: app.globalData.tonguecount,
+      mHidden: app.globalData.tonguemHidden, // 拍照提示是否隐藏
+      tonguefeature: app.globalData.tonguefeature
     })
     wx.getSetting({
       success: (res) => {
@@ -234,6 +284,7 @@ Page({
             authCamera: true,
           })
         } else {
+
           this.setData({
             authCamera: false,
           })
@@ -241,4 +292,6 @@ Page({
       }
     });
   },
+
+
 })

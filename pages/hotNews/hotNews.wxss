@@ -43,5 +43,6 @@
 .udetail {
   clear: both;
   margin-top: 20rpx;
-  text-indent: 45rpx;
+  text-indent: 55rpx;
+  text-align: justify;
 }

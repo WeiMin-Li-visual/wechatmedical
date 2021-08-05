@@ -38,7 +38,7 @@
         },
         {
           "name": "舌诊",
-          "pathName": "pages/tongu/tongu",
+          "pathName": "pages/tongue/tongue",
           "query": "",
           "scene": null
         },
@@ -56,7 +56,19 @@
         },
         {
           "name": "舌诊报告",
-          "pathName": "pages/tongureport/tongureport",
+          "pathName": "pages/tonguereport/tonguereport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "掌色报告",
+          "pathName": "pages/palmreport/palmreport",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "面色报告",
+          "pathName": "pages/facereport/facereport",
           "query": "",
           "scene": null
         }

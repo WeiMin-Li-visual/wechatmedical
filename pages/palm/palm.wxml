@@ -1,10 +1,10 @@
-<!-- 页面弹窗 -->
+<!-- 页面提示弹窗 -->
 <view>
-  <modal title="拍摄注意事项" cancel-text="关闭" hidden="{{mHidden}}" confirm-text="确定" bindconfirm="confirmModel" bindcancel="closeModel">
+  <modal title="拍摄注意事项" cancel-text="关闭" hidden="{{mHidden}}" confirm-text="确定" bindconfirm="confirmModel"
+    bindcancel="closeModel">
     <view>
-      <image class="notice_image" src="/static/image/notice_palm.jpg">
-      </image>
-      <view class="notice_text">注意：将手掌完全打开，光线充足</view>
+      <image class="notice_image" src="/static/image/notice_palm.jpg"></image>
+      <view class="notice_text">拍照保证光线充足，关闭美颜</view>
     </view>
   </modal>
 </view>
@@ -13,37 +13,35 @@
   <view class="camera_container">
     <view wx:if="{{authCamera}}" class="camera_wrp">
       <camera binderror="handleCameraError" device-position="{{devicePosition}}" flash="{{flash}}">
-        <view class='cover_view'>
+        <view wx:if="{{count==0}}" class='cover_view'>
           <image class="outline" src="/static/image/outline/left_palm.png"></image>
-          <view class='cover_text'>拍摄手掌照片</view>
+          <view class='cover_text'>拍摄左手照片</view>
+        </view>
+        <view wx:if="{{count==1}}" class='cover_view'>
+          <image class="outline" src="/static/image/outline/right_palm.png"></image>
+          <view class='cover_text'>拍摄右手照片</view>
         </view>
       </camera>
     </view>
-
     <view class="camera_auth" wx:if="{{!authCamera}}">
       <image class="auth_bg" src="/static/image/profile/bg_profile.png"></image>
       <navigator url="/pages/cameraauth/cameraauth">点击进行相机授权</navigator>
-      <!-- <button class="auth_btn"  bindtap="getCameraSetting">打开相机授权</button> -->
     </view>
   </view>
 
-
   <view class="menu_container">
     <view class="menu_content">
-      <navigator bindtap="chooseImage">
+      <view class="menu_view" bindtap="chooseImage">
         <view class="album_icon iconfont icon-xiangce"></view>
-        <!-- <view class="his_name">相册选取</view> -->
-      </navigator>
+      </view>
 
-      <navigator bindtap="takePhoto">
+      <view class="menu_view" bindtap="takePhoto">
         <view class="photo_icon iconfont icon-paizhao1-copy"></view>
-        <!-- <view class="his_name">拍照</view> -->
-      </navigator>
+      </view>
 
-      <navigator bindtap="reverseCamera">
+      <view class="menu_view" bindtap="reverseCamera">
         <view class="xuanzhuan_icon iconfont icon-raoxiangjixuanzhuan-copy"></view>
-        <!-- <view class="his_name">相机切换</view> -->
-      </navigator>
+      </view>
     </view>
   </view>
 </view>

@@ -2,7 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/index/login/login",
-    "pages/tongu/tongu",
+    "pages/tongue/tongue",
     "pages/face/face",
     "pages/palm/palm",
     "pages/healthreport/healthreport",
@@ -12,7 +12,9 @@
     "pages/contactus/contactus",
     "pages/cameraauth/cameraauth",
     "pages/hotNews/hotNews",
-    "pages/tongureport/tongureport"
+    "pages/tonguereport/tonguereport",
+    "pages/facereport/facereport",
+    "pages/palmreport/palmreport"
   ],
   "window": {
     "navigationBarBackgroundColor": "#000000",

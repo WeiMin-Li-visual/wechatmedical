@@ -10,8 +10,10 @@
       <view class="liy"></view><text>{{healthknos.name}}</text>
     </view>
 
-    <view class="">
-      <view class="udetail">{{healthknos.detail}}</view>
+    <view class="udetail">
+      <view wx:for="{{healthknos.detail}}" wx:key="id">
+        {{healthknos.detail[index]}}
+      </view>
     </view>
   </view>
 </view>

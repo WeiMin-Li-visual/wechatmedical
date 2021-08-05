@@ -1,20 +1,25 @@
-<!-- 页面弹窗 -->
+<!-- 页面提示弹窗 -->
 <view>
   <modal title="拍摄注意事项" cancel-text="关闭" hidden="{{mHidden}}" confirm-text="确定" bindconfirm="confirmModel"
     bindcancel="closeModel">
     <view>
-      <image class="notice_image" src="/static/image/notice_tongu.jpg"></image>
+      <image class="notice_image" src="/static/image/notice_tongue.jpg"></image>
       <view class="notice_text">注意：诊断前不要进食</view>
     </view>
   </modal>
 </view>
+
+<!-- 上传弹窗 -->
+<!-- <view wx:if="{{upload_hidden==false}}">
+  <image class="notice_image" src="/static/image/notice_tongue.jpg"></image>
+</view> -->
 
 <view class="container">
   <view class="camera_container">
     <view wx:if="{{authCamera}}" class="camera_wrp">
       <camera binderror="handleCameraError" device-position="{{devicePosition}}" flash="{{flash}}">
         <view wx:if="{{count==0}}" class='cover_view'>
-          <image class="outline" src="/static/image/outline/tongu_outline.png"></image>
+          <image class="outline" src="/static/image/outline/tongue_outline.png"></image>
           <view class='cover_text'>拍摄舌面照片</view>
         </view>
         <view wx:if="{{count==1}}" class='cover_view'>

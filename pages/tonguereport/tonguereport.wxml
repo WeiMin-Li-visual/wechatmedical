@@ -1,0 +1,71 @@
+<view class="container">
+    <view class="head">
+        <view class="text_report">健康报告:</view>
+        <image class="image_container" wx:for="{{tongueimagelist}}" src="{{item}}"></image>
+        <view class="text">健康报告生成时间：{{time}}</view>
+        <view class="time">郑重说明：本报告为辅助诊断结果，仅供参考。</view>
+    </view>
+
+    <view class="body">
+        <!-- tab导航栏 -->
+        <!-- scroll-left属性可以控制滚动条位置 -->
+        <!-- scroll-with-animation滚动添加动画过渡 -->
+        <view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+            <block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+                <view class="nav-item {{currentTab == idx ?'active ':''}}" data-current="{{idx}}" bindtap="switchNav">
+                    {{navItem.text}}
+                </view>
+            </block>
+        </view>
+
+        <!-- 页面内容 -->
+        <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab">
+            <swiper-item wx:for="{{report}}" wx:for-item="reportItem" wx:for-index="idx" wx:key="idx"
+                class="tab-content">
+                <!-- 表征分析c -->
+                <view wx:if="{{idx==0}}" class="report_container">
+                    <!-- 舌色 -->
+                    <view class='tongue_color'>
+                        <text class='title iconfont icon-weibiaoti--'>舌色</text>
+                        <text class='content_symptom'>{{tongue_color.symptom}}</text>
+                        <view class="content_detail" wx:for="{{tongue_color.detail}}" wx:key="id">
+                            {{tongue_color.detail[index]}}
+                        </view>
+                    </view>
+
+                    <!-- 舌型 -->
+                    <view class='tongue_shape'>
+                        <text class='title iconfont icon-weibiaoti--'>舌型</text>
+                        <text class='content_symptom'>{{tongue_shape.symptom}}</text>
+                        <view class="content_detail" wx:for="{{tongue_shape.detail}}" wx:key="id">
+                            {{tongue_shape.detail[index]}}
+                        </view>
+                    </view>
+
+                    <!-- 苔色 -->
+                    <view class='tongue_moss_color'>
+                        <text class='title iconfont icon-weibiaoti--'>苔色</text>
+                        <text class='content_symptom'>{{tongue_moss_color.symptom}}</text>
+                        <view class="content_detail" wx:for="{{tongue_moss_color.detail}}" wx:key="id">
+                            {{tongue_moss_color.detail[index]}}
+                        </view>
+                    </view>
+
+                    <!-- 苔质 -->
+                    <view class='tongue_moss_nature'>
+                        <text class='title iconfont icon-weibiaoti--'>苔质</text>
+                        <text class='content_symptom'>{{tongue_moss_nature.symptom}}</text>
+                        <view class="content_detail" wx:for="{{tongue_moss_nature.detail}}" wx:key="id">
+                            {{tongue_moss_nature.detail[index]}}
+                        </view>
+                    </view>
+                </view>
+
+                <!-- 调理建议 -->
+                <view wx:if="{{idx==1}}" class="suggest">
+                    {{reportItem.suggest}}
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

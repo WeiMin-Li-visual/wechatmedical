@@ -1,14 +1,16 @@
-// pages/tongu/tongu.js
+//获取应用实例
+var app = getApp();
+
 Page({
   data: {
-    // imagelist: [],
-    image_src: '',
     devicePosition: 'back', // 相机前后置
     authCamera: false, //用户是否运行授权拍照  
     flash: false, // 闪光灯，默认关闭
-    mHidden: false
+    upload_status: "",
+    upload_hidden: true,
   },
 
+  // 页面弹窗关闭
   closeModel: function () {
     var that = this
     that.setData({
@@ -16,7 +18,8 @@ Page({
     });
   },
 
-  confirmModel:function(){
+  // 页面弹窗确定
+  confirmModel: function () {
     var that = this
     that.setData({
       mHidden: true
@@ -35,37 +38,152 @@ Page({
   // 翻转相机前后置
   reverseCamera: function () {
     this.setData({
-      devicePosition: "back" === this.data.devicePosition ? "front" : "back"
+      devicePosition: "back" === this.data.devicePosition ? "front" : "back",
+      mHidden: true
     });
   },
 
   //拍摄照片  
   takePhoto: function () {
+    var that = this;
     wx.createCameraContext().takePhoto({
       quality: 'high', //拍摄质量(high:高质量 normal:普通质量 low:高质量)  
       success: (res) => {
-        //拍摄成功  
-        //照片文件的临时文件  
+        // 拍摄成功，显示正在上传，禁用相机
+        that.setData({
+          upload_hidden: true,
+          mHidden: true
+        })
 
         //上传图片到服务器  
         var pic = res.tempImagePath;
         wx.uploadFile({
-          url: 'http://127.0.0.1:5000/uploadImage',
+          url: 'http://127.0.0.1:5000/palm/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
+            app.globalData.palmimagelist = that.data.palmimagelist.concat(pic) // 保存图片
+            if (that.data.count == 0) {
+              app.globalData.palmcount = 1
+              var report = JSON.parse(e.data)
+              app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
+              wx.navigateTo({
+                url: '/pages/palm/palm',
+              })
+            }
+            // 分析结果并跳转到结果界面
+            else if (that.data.count == 1) {
+              var report = JSON.parse(e.data)
+              app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
+              app.globalData.palmcount = 0
+              wx.navigateTo({
+                url: '/pages/palmreport/palmreport', // 这里跳转到结果界面
+              })
+            }
+            that.setData({
+              upload_hidden: false,
+              mHidden: true
+            })
+            app.globalData.palmmHidden = true
           },
           fail: function (t) {
-            //上传失败  
+            that.setData({
+              //上传失败  
+              upload_status: "上传失败",
+              mHidden: true
+            })
+            app.globalData.palmmHidden = true
+            app.globalData.palmcount = 0
           },
         })
       },
       fail: (res) => {
-        //拍摄失败  
+        that.setData({
+          //拍摄失败  
+          upload_status: "拍照失败，请重新拍摄",
+          mHidden: true
+
+        })
+        app.globalData.palmmHidden = true
+        app.globalData.palmcount = 0
       },
     })
   },
 
+  // 相册选择图片
+  chooseImage() {
+    var that = this;
+    wx.chooseImage({
+      count: 1, // 最多选择多少张
+      sizeType: ['original', 'compressed'], // 大小，是否原图
+      // sourceType: ['album', 'camera'], //相册或相机获取
+      sourceType: ['album'],
+      success: function (res) {
+        // 照片选择成功
+        that.setData({
+          upload_hidden: true,
+          mHidden: true
+        })
+
+        //上传图片到服务器  
+        var pic = res.tempFilePaths[0];
+        console.log(pic)
+        wx.uploadFile({
+          url: 'http://127.0.0.1:5000/palm/uploadimage',
+          filePath: String(pic),
+          name: 'image',
+          success: function (e) {
+            app.globalData.palmimagelist = that.data.palmimagelist.concat(pic) // 保存图片
+            if (that.data.count == 0) {
+              app.globalData.palmcount = 1
+              var report = JSON.parse(e.data)
+              app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
+              wx.navigateTo({
+                url: '/pages/palm/palm',
+              })
+            }
+            // 分析结果并跳转到结果界面
+            else if (that.data.count == 1) {
+              var report = JSON.parse(e.data)
+              app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
+              app.globalData.palmcount = 0
+              wx.navigateTo({
+                url: '/pages/palmreport/palmreport', // 这里跳转到结果界面
+              })
+            }
+
+            that.setData({
+              mHidden: true,
+              upload_hidden: false
+            })
+
+            app.globalData.palmmHidden = true
+          },
+          fail: function (t) {
+            that.setData({
+              //上传失败  
+              upload_status: "上传失败",
+              mHidden: true
+            })
+
+            app.globalData.palmmHidden = true
+            app.globalData.palmcount = 0
+          },
+        })
+      },
+      fail: (res) => {
+        that.setData({
+          //拍摄失败  
+          upload_status: "拍照失败，请重新拍摄",
+          mHidden: true
+        })
+        app.globalData.palmmHidden = true
+        app.globalData.palmcount = 0
+      },
+    })
+  },
+
+  // 获取用户相机授权
   getCameraSetting() {
     const _this = this
     wx.getSetting({
@@ -126,13 +244,21 @@ Page({
   },
 
   onShow: function () {
+    this.setData({
+      palmimagelist: app.globalData.palmimagelist, // 保存用户拍的两张照片
+      count: app.globalData.palmcount,
+      mHidden: app.globalData.palmmHidden, // 拍照提示是否隐藏
+      palmfeature: app.globalData.palmfeature
+    })
     wx.getSetting({
       success: (res) => {
         if (res.authSetting["scope.camera"]) {
+
           this.setData({
             authCamera: true,
           })
         } else {
+
           this.setData({
             authCamera: false,
           })
@@ -140,61 +266,4 @@ Page({
       }
     });
   },
-
-  // 选择图片
-  chooseImage() {
-    var that = this;
-    wx.chooseImage({
-      count: 1, // 最多选择多少张
-      sizeType: ['original', 'compressed'], // 大小，是否原图
-      // sourceType: ['album', 'camera'], //相册或相机获取
-      sourceType: ['album'],
-      success: function (res) {
-        var pic = res.tempFilePaths
-        wx.uploadFile({
-          url: 'http://127.0.0.1:5000/uploadImage',
-          filePath: String(pic),
-          name: 'image',
-          success: function (e) {
-
-          }
-        })
-
-        // // 在默认图片之后加图片；
-        // const img = res.tempFilePaths
-        // that.setData({
-        //   image_src: img,
-        //   // imagelist: that.data.imagelist.concat(res.tempFilePaths)
-        // });
-      }
-    })
-  },
-
-  // // 上传图片
-  // uploadImage() {
-  //   wx.request({
-  //     url: 'http://127.0.0.1:5000/uploadImage',
-  //     data: {
-  //       imagelist: this.data.imagelist
-  //     },
-  //     method: "POST",
-  //     success: function (result) {
-  //       console.log(result);
-  //     }
-  //   })
-  // }
-
-  uploadImage() {
-    var that = this
-    var pic = that.data.image_src
-    // var pic1=that.data.imagelist
-    wx.uploadFile({
-      url: 'http://127.0.0.1:5000/uploadImage',
-      filePath: String(pic),
-      name: 'image',
-      success: function (e) {
-
-      }
-    })
-  }
 })

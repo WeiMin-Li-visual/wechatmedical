@@ -1,0 +1,44 @@
+<view class="container">
+    <view class="head">
+        <view class="text_report">健康报告:</view>
+        <image class="image_container" wx:for="{{faceimagelist}}" src="{{item}}"></image>
+        <view class="text">健康报告生成时间：{{time}}</view>
+        <view class="time">郑重说明：本报告为辅助诊断结果，仅供参考。</view>
+    </view>
+
+    <view class="body">
+        <!-- tab导航栏 -->
+        <!-- scroll-left属性可以控制滚动条位置 -->
+        <!-- scroll-with-animation滚动添加动画过渡 -->
+        <view scroll-x="true" class="nav" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+            <block wx:for="{{navData}}" wx:for-index="idx" wx:for-item="navItem" wx:key="idx">
+                <view class="nav-item {{currentTab == idx ?'active ':''}}" data-current="{{idx}}" bindtap="switchNav">
+                    {{navItem.text}}
+                </view>
+            </block>
+        </view>
+
+        <!-- 页面内容 -->
+        <swiper class="tab-box" current="{{currentTab}}" duration="300" bindchange="switchTab">
+            <swiper-item wx:for="{{report}}" wx:for-item="reportItem" wx:for-index="idx" wx:key="idx"
+                class="tab-content">
+                <!-- 表征分析c -->
+                <view wx:if="{{idx==0}}" class="report_container">
+                    <!-- 舌色 -->
+                    <view class='face_color'>
+                        <text class='title iconfont icon-weibiaoti--'>面色</text>
+                        <text class='content_symptom'>{{face_color.symptom}}</text>
+                        <view class="content_detail" wx:for="{{face_color.detail}}" wx:key="id">
+                            {{face_color.detail[index]}}
+                        </view>
+                    </view>
+                </view>
+
+                <!-- 调理建议 -->
+                <view wx:if="{{idx==1}}" class="suggest">
+                    {{reportItem.suggest}}
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

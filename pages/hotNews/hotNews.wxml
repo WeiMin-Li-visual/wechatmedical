@@ -6,9 +6,10 @@
     <view class="utitle">
       <view class="liy"></view><text>{{swiperlist.name}}</text>
     </view>
-    <view class="">
-      <view class="udetail">{{swiperlist.detail}}</view>
+    <view class="udetail">
+      <view wx:for="{{swiperlist.detail}}" wx:key="id">
+        {{swiperlist.detail[index]}}
+      </view>
     </view>
   </view>
 </view>
-
