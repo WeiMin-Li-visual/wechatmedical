@@ -75,8 +75,11 @@ Page({
     },
 
     onUnload:function () {
-        app.globalData.tonguecount = 0;
-        app.globalData.tonguemHidden=false;
+        app.globalData.facecount = 0;
+        app.globalData.facemHidden=false;
+        app.globalData.faceimagelist=[];
+        app.globalData.facefeature=[[]];
+
         wx.reLaunch({
           url: '/pages/index/index',
         });

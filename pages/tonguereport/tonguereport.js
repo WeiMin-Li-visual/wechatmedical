@@ -125,6 +125,9 @@ Page({
     onUnload:function () {
         app.globalData.tonguecount = 0;
         app.globalData.tonguemHidden=false;
+        app.globalData.tongueimagelist=[];
+        app.globalData.tonguefeature=[[],[],[],[],[],[]];
+    
         wx.reLaunch({
           url: '/pages/index/index',
         });
