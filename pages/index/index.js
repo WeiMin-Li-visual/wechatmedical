@@ -10,10 +10,6 @@ Page({
     current: 0,
     lines: 0,
 
-    userInfo: app.globalData.userInfo,
-    hasUserInfo: app.globalData.hasUserInfo,
-    canIUseGetUserProfile: app.globalData.canIUseGetUserProfile,
-
     indicatorDots: true,
     vertical: false,
     autoplay: true,

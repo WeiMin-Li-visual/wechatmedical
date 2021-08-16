@@ -61,16 +61,24 @@ camera {
   font-size: 50rpx;
 }
 
+.camera_auth{
+  width: 100%;
+  height: 85vh;
+  position: absolute;
+}
+
+.auth_bg{
+  height: 100%;
+  width: 100%;
+}
+
 .auth_btn {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  top: 40%;
-  border: 1rox solid greenyellow;
+  transform: translate(-50%, -50%);
+  top: 50%;
   color: greenyellow;
   font-size: 40rpx;
-  padding: 30rpx;
-  border-radius: 10rpx;
 }
 
 .menu_container {

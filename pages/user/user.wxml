@@ -1,15 +1,16 @@
 <!--pages/profile.wxml-->
 <view class="user_info_wrap">
-  <view wx:if="{{userinfo.avatarUrl}}" class="user_img_wrap">
-    <image class="user_bg" src="{{userinfo.avatarUrl}}"></image>
+  <view wx:if="{{hasUserInfo}}" class="user_img_wrap">
+    <image class="user_bg" src="{{userInfo.avatarUrl}}"></image>
     <view class="user_info">
-      <image class="user_icon" src="{{userinfo.avatarUrl}}"></image>
-      <view class="user_name">{{userinfo.nickName}}</view>
+      <image class="user_icon" src="{{userInfo.avatarUrl}}"></image>
+      <view class="user_name">{{userInfo.nickName}}</view>
     </view>
   </view>
 
-  <view wx:else class="user_btn">
-    <navigator url="/pages/index/login/login">登录</navigator>
+  <view wx:else >
+    <button class="auth_btn" plain bindtap="login"> 登录 </button>
+    <!-- <navigator url="/pages/index/login/login">登录</navigator> -->
   </view>
 </view>
 

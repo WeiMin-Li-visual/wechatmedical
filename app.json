@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/index/login/login",
     "pages/tongue/tongue",
     "pages/face/face",
     "pages/palm/palm",
@@ -10,7 +9,6 @@
     "pages/aboutus/aboutus",
     "pages/user/user",
     "pages/contactus/contactus",
-    "pages/cameraauth/cameraauth",
     "pages/hotNews/hotNews",
     "pages/tonguereport/tonguereport",
     "pages/facereport/facereport",

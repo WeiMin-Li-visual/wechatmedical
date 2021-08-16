@@ -5,7 +5,7 @@ var config = require("../../config.js");
 
 Page({
     data: {
-        tongueimagelist: ["/static/image/healthknos/healthhkno1.jpg", "/static/image/healthknos/healthhkno1.jpg"],
+        imagelist: ["/static/image/healthknos/healthhkno1.jpg", "/static/image/healthknos/healthhkno1.jpg"],
 
         navData: [{
                 text: '表征分析'
@@ -57,9 +57,6 @@ Page({
         this.setData({
             time: time
         });
-    },
-
-    onShow: function () {
         var tongue_color_index = 0;
         var tongue_shape_index = 0;
         var tongue_moss_color_index = 0;
@@ -112,9 +109,9 @@ Page({
         }
 
         this.setData({
-            tongueimagelist: app.globalData.tongueimagelist, // 保存用户拍的两张照片
-            count: app.globalData.tonguecount,
-            mHidden: app.globalData.tonguemHidden, // 拍照提示是否隐藏
+            imagelist: app.globalData.imagelist, // 保存用户拍的两张照片
+            imagecount: app.globalData.imagecount,
+            mHidden: app.globalData.mHidden, // 拍照提示是否隐藏
             tongue_color: config.tongue_color[tongue_color_index],
             tongue_shape: config.tongue_shape[tongue_shape_index],
             tongue_moss_color: config.tongue_moss_color[tongue_moss_color_index],
@@ -123,9 +120,9 @@ Page({
     },
 
     onUnload:function () {
-        app.globalData.tonguecount = 0;
-        app.globalData.tonguemHidden=false;
-        app.globalData.tongueimagelist=[];
+        app.globalData.imagecount = 0;
+        app.globalData.mHidden=false;
+        app.globalData.imagelist=[];
         app.globalData.tonguefeature=[[],[],[],[],[],[]];
     
         wx.reLaunch({

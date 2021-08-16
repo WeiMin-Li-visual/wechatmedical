@@ -5,7 +5,7 @@ var config = require("../../config.js");
 
 Page({
     data: {
-        palmimagelist: [],
+        imagelist: [],
         navData: [{
                 text: '表征分析'
             },
@@ -56,9 +56,6 @@ Page({
         this.setData({
             time: time
         });
-    },
-
-    onShow: function () {
         var face_color_index = 0;
         // 面色索引
         if (app.globalData.facefeature[0][0] > app.globalData.facefeature[0][1]) {
@@ -67,17 +64,17 @@ Page({
             face_color_index = app.globalData.facefeature[0][1];
         }
         this.setData({
-            faceimagelist: app.globalData.faceimagelist, // 保存用户拍的两张照片
-            count: app.globalData.facecount,
-            mHidden: app.globalData.facemHidden, // 拍照提示是否隐藏
+            imagelist: app.globalData.imagelist, // 保存用户拍的两张照片
+            imagecount: app.globalData.imagecount,
+            mHidden: app.globalData.mHidden, // 拍照提示是否隐藏
             face_color: config.face_color[face_color_index],
         });
     },
 
     onUnload:function () {
-        app.globalData.facecount = 0;
-        app.globalData.facemHidden=false;
-        app.globalData.faceimagelist=[];
+        pp.globalData.imagecount = 0;
+        app.globalData.mHidden=false;
+        app.globalData.imagelist=[];
         app.globalData.facefeature=[[]];
 
         wx.reLaunch({

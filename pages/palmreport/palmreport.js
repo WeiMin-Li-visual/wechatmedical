@@ -5,7 +5,7 @@ var config = require("../../config.js");
 
 Page({
     data: {
-        palmimagelist: ["/static/image/healthknos/healthhkno1.jpg", "/static/image/healthknos/healthhkno1.jpg"],
+        imagelist: ["/static/image/healthknos/healthhkno1.jpg", "/static/image/healthknos/healthhkno1.jpg"],
         navData: [{
                 text: '表征分析'
             },
@@ -56,9 +56,6 @@ Page({
         this.setData({
             time: time
         });
-    },
-
-    onShow: function () {
         var palm_color_index = 0;
 
         // 掌色索引
@@ -69,17 +66,17 @@ Page({
         }
 
         this.setData({
-            palmimagelist: app.globalData.palmimagelist, // 保存用户拍的两张照片
-            count: app.globalData.palmcount,
-            mHidden: app.globalData.palmmHidden, // 拍照提示是否隐藏
+            imagelist: app.globalData.imagelist, // 保存用户拍的两张照片
+            imagecount: app.globalData.imagecount,
+            mHidden: app.globalData.mHidden, // 拍照提示是否隐藏
             palm_color: config.palm_color[palm_color_index],
         });
     },
 
     onUnload:function () {
-        app.globalData.palmcount = 0;
-        app.globalData.palmmHidden=false;
-        app.globalData.palmimagelist=[];
+        app.globalData.imagecount = 0;
+        app.globalData.mHidden=false;
+        app.globalData.imagelist=[];
         app.globalData.palmfeature=[[]];
 
         wx.reLaunch({

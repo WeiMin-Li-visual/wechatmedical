@@ -1,8 +1,0 @@
-<!--pages/cameraauth/cameraauth.wxml-->
-<view class="container">
-  <view class="camerainfo">
-    <block wx:if="{{!hasUserInfo}}">
-      <button type="primary" plain bindtap="getCameraSetting"> 用户相机授权 </button>
-    </block>
-  </view>
-</view>

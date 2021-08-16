@@ -3,11 +3,17 @@ var app = getApp();
 
 Page({
   data: {
-    devicePosition: 'back', // 相机前后置
+    devicePosition: 'front', // 相机前后置
     authCamera: false, //用户是否运行授权拍照  
     flash: false, // 闪光灯，默认关闭
-    upload_status: "",
-    upload_hidden: true,
+    upload_status: true, // 上传状态
+    imagelist: [], //记录上传照片
+    upload_dic: "", // 上传状态对应的描述
+    uploadHidden: true, // 上传过程的加载界面
+    imagecount: 0, // 记录已经上传了几张照片，0表示当前开始上传舌面照片，1表示当前上传舌背照片
+    mHidden: 0, // 拍照提示是否隐藏
+    uploadHidden: true, //正在上传提示
+    feature: [],
   },
 
   // 页面弹窗关闭
@@ -23,6 +29,14 @@ Page({
     var that = this
     that.setData({
       mHidden: true
+    });
+  },
+
+  failfun: function () {
+    app.globalData.mHidden = this.data.mHidden;
+    app.globalData.imagecount = this.data.imagecount;
+    wx.navigateTo({
+      url: '/pages/palm/palm',
     });
   },
 
@@ -51,61 +65,72 @@ Page({
       success: (res) => {
         // 拍摄成功，显示正在上传，禁用相机
         that.setData({
-          upload_hidden: true,
-          mHidden: true
+          uploadHidden: false,
         })
 
         //上传图片到服务器  
         var pic = res.tempImagePath;
         wx.uploadFile({
-          url: 'http://127.0.0.1:5000/palm/uploadimage',
+          // 本地地址
+          // url: 'http://127.0.0.1:5000/palm/uploadimage', 
+
+          // 实验室服务器地址
+          url: 'http://58.199.160.140:9200/palm/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
-            app.globalData.palmimagelist = that.data.palmimagelist.concat(pic) // 保存图片
-            if (that.data.count == 0) {
-              app.globalData.palmcount = 1
-              var report = JSON.parse(e.data)
-              app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
-              wx.navigateTo({
-                url: '/pages/palm/palm',
-              })
-            }
-            // 分析结果并跳转到结果界面
-            else if (that.data.count == 1) {
-              var report = JSON.parse(e.data)
-              app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
-              app.globalData.palmcount = 0
-              wx.navigateTo({
-                url: '/pages/palmreport/palmreport', // 这里跳转到结果界面
-              })
-            }
+            // 关闭正在上传
             that.setData({
-              upload_hidden: false,
-              mHidden: true
-            })
-            app.globalData.palmmHidden = true
+              uploadHidden: true,
+            });
+
+            var report = JSON.parse(e.data);
+            // 没有检测到手掌
+            if (report["tongue_exist"] == 0) {
+              that.setData({
+                upload_status: false,
+                upload_dic: "没有检测到手掌，请重新拍摄"
+              });
+            } else {
+              app.globalData.imagelist = that.data.imagelist.concat(pic) // 保存图片
+              app.globalData.mHidden = true
+              if (that.data.count == 0) {
+                that.setData({
+                  imagecount: 1,
+                })
+                app.globalData.imagecount = that.data.imagecount
+                app.globalData.palmfeature[0] = that.data.feature[0].concat(report["palm_color"])
+                wx.navigateTo({
+                  url: '/pages/palm/palm',
+                })
+              }
+              // 分析结果并跳转到结果界面
+              else if (that.data.count == 1) {
+                that.setData({
+                  imagecount: 0,
+                })
+                app.globalData.imagecount = that.data.imagecount
+                app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
+                wx.navigateTo({
+                  url: '/pages/palmreport/palmreport', // 这里跳转到结果界面
+                })
+              }
+            }
           },
           fail: function (t) {
             that.setData({
               //上传失败  
-              upload_status: "上传失败",
-              mHidden: true
+              upload_status: false,
+              upload_dic: "上传失败，请重新拍照",
             })
-            app.globalData.palmmHidden = true
-            app.globalData.palmcount = 0
           },
         })
       },
       fail: (res) => {
         that.setData({
-          //拍摄失败  
-          upload_status: "拍照失败，请重新拍摄",
-          mHidden: true
-
+          upload_status: false,
+          upload_dic: "拍照失败，请重新拍照",
         })
-        app.globalData.palmmHidden = true
-        app.globalData.palmcount = 0
       },
     })
   },
@@ -121,79 +146,87 @@ Page({
       success: function (res) {
         // 照片选择成功
         that.setData({
-          upload_hidden: true,
-          mHidden: true
+          uploadHidden: false, // 显示正在上传
         })
 
         //上传图片到服务器  
         var pic = res.tempFilePaths[0];
         console.log(pic)
         wx.uploadFile({
-          url: 'http://127.0.0.1:5000/palm/uploadimage',
+          // 本地地址
+          // url: 'http://127.0.0.1:5000/palm/uploadimage', 
+
+          // 实验室服务器地址
+          url: 'http://58.199.160.140:9200/palm/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
-            app.globalData.palmimagelist = that.data.palmimagelist.concat(pic) // 保存图片
-            if (that.data.count == 0) {
-              app.globalData.palmcount = 1
-              var report = JSON.parse(e.data)
-              app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
-              wx.navigateTo({
-                url: '/pages/palm/palm',
-              })
-            }
-            // 分析结果并跳转到结果界面
-            else if (that.data.count == 1) {
-              var report = JSON.parse(e.data)
-              app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
-              app.globalData.palmcount = 0
-              wx.navigateTo({
-                url: '/pages/palmreport/palmreport', // 这里跳转到结果界面
-              })
-            }
-
+            // 关闭正在上传
             that.setData({
-              mHidden: true,
-              upload_hidden: false
-            })
+              uploadHidden: true,
+            });
 
-            app.globalData.palmmHidden = true
+            var report = JSON.parse(e.data);
+            // 没有检测到手掌
+            if (report["tongue_exist"] == 0) {
+              that.setData({
+                upload_status: false,
+                upload_dic: "没有检测到手掌，请重新拍摄"
+              });
+            } else {
+              app.globalData.imagelist = that.data.imagelist.concat(pic) // 保存图片
+              app.globalData.mHidden = true
+              if (that.data.count == 0) {
+                that.setData({
+                  imagecount: 1,
+                })
+                app.globalData.imagecount = that.data.imagecount
+                app.globalData.palmfeature[0] = that.data.feature[0].concat(report["palm_color"])
+                wx.navigateTo({
+                  url: '/pages/palm/palm',
+                })
+              }
+              // 分析结果并跳转到结果界面
+              else if (that.data.count == 1) {
+                that.setData({
+                  imagecount: 0,
+                })
+                app.globalData.imagecount = that.data.imagecount
+                app.globalData.palmfeature[0] = that.data.palmfeature[0].concat(report["palm_color"])
+                wx.navigateTo({
+                  url: '/pages/palmreport/palmreport', // 这里跳转到结果界面
+                })
+              }
+            }
           },
           fail: function (t) {
             that.setData({
               //上传失败  
-              upload_status: "上传失败",
-              mHidden: true
+              upload_status: false,
+              upload_dic: "上传失败，请重新拍照",
             })
-
-            app.globalData.palmmHidden = true
-            app.globalData.palmcount = 0
           },
         })
       },
       fail: (res) => {
         that.setData({
-          //拍摄失败  
-          upload_status: "拍照失败，请重新拍摄",
-          mHidden: true
+          // 选择图片失败
+          upload_status: false,
+          upload_dic: "选择图片失败，请重新选择或拍照",
         })
-        app.globalData.palmmHidden = true
-        app.globalData.palmcount = 0
       },
     })
   },
 
-  // 获取用户相机授权
   getCameraSetting() {
-    const _this = this
+    const that = this
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.camera']) {
           // 用户已经授权
-          _this.setData({
-            // isAuth: true,
-            isNeedSettingButton: false
-          })
+          that.setData({
+            authCamera: true
+          });
           wx.navigateBack({
             delta: 1,
           });
@@ -202,26 +235,25 @@ Page({
           wx.authorize({
             scope: 'scope.camera',
             success() { // 用户同意授权
-              _this.setData({
-                // isAuth: true,
-                isNeedSettingButton: false
-              })
+              that.setData({
+                authCamera: true
+              });
               wx.navigateBack({
-                delta: 0,
+                delta: 1,
               });
             },
             fail() { // 用户不同意授权
-              _this.setData({
-                isNeedSettingButton: true
-              })
+              that.setData({
+                authCamera: false
+              });
+              wx.navigateBack({
+                delta: 1,
+              });
               wx.showToast({
                 title: '授权失败',
                 icon: 'none',
                 duration: 3000
               })
-              wx.navigateBack({
-                delta: 0,
-              });
             }
           })
         }
@@ -232,33 +264,31 @@ Page({
           title: '获取用户授权信息失败',
           icon: 'none',
           duration: 3000
-        })
-        _this.setData({
-          isNeedSettingButton: true
-        })
+        });
+        that.setData({
+          authCamera: false
+        });
         wx.navigateBack({
-          delta: 0,
+          delta: 1,
         });
       }
     })
   },
-
-  onShow: function () {
+  
+  onLoad: function () {
     this.setData({
       palmimagelist: app.globalData.palmimagelist, // 保存用户拍的两张照片
       count: app.globalData.palmcount,
       mHidden: app.globalData.palmmHidden, // 拍照提示是否隐藏
-      palmfeature: app.globalData.palmfeature
+      palmfeature: app.globalData.palmfeature,
     })
     wx.getSetting({
       success: (res) => {
         if (res.authSetting["scope.camera"]) {
-
           this.setData({
             authCamera: true,
           })
         } else {
-
           this.setData({
             authCamera: false,
           })

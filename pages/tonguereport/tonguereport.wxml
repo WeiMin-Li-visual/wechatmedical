@@ -1,7 +1,7 @@
 <view class="container">
     <view class="head">
         <view class="text_report">健康报告:</view>
-        <image class="image_container" wx:for="{{tongueimagelist}}" src="{{item}}"></image>
+        <image class="image_container" wx:for="{{imagelist}}" src="{{item}}"></image>
         <view class="text">健康报告生成时间：{{time}}</view>
         <view class="time">郑重说明：本报告为辅助诊断结果，仅供参考。</view>
     </view>
