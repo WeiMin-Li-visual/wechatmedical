@@ -1,18 +1,32 @@
+var app = getApp();
+
 Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUseGetUserProfile: false,
   },
+
   onLoad() {
-    if (wx.getUserProfile) {
+    if (wx.getStorageSync('userinfo')) {
       this.setData({
-        canIUseGetUserProfile: true
+        userInfo: wx.getStorageSync('userinfo'),
+        hasUserInfo: true,
       })
     }
   },
 
-  getUserProfile(e) {
+  onShareAppMessage(result) {
+    // 转发
+    return {
+      title: '慧诊',
+      desc: '助力中医发展',
+      imageUrl: "/static/image/logo.jpg",
+      path: '/page/index/index'
+    }
+  },
+
+  // 用户登录
+  login(e) {
     if (!wx.getStorageSync('userinfo')) {
       wx.getUserProfile({
         desc: '健康管理',
