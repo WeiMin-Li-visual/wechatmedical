@@ -3,12 +3,43 @@ page {
   background-color: #edece8;
 }
 
-.notice_image{
+.wait_wrp {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.wait_image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.wait_text {
+  position: absolute;
+  left: 36%;
+  transform: translate(-30%, -36%);
+  top: 50%;
+  color: greenyellow;
+  font-size: 40rpx;
+}
+
+.wait_text1 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 55%;
+  color: greenyellow;
+  font-size: 40rpx;
+}
+
+.notice_image {
   width: 100%;
   height: 400rpx;
 }
 
-.notice_text{
+.notice_text {
   color: #ff0000;
 }
 
@@ -47,7 +78,7 @@ camera {
   position: absolute;
 }
 
-.cover_view{
+.cover_view {
   height: 100%;
   width: 100%;
   position: relative;
@@ -55,19 +86,19 @@ camera {
   justify-content: center;
 }
 
-.cover_text{
+.cover_text {
   margin-top: 100rpx;
   color: #ffff;
   font-size: 50rpx;
 }
 
-.camera_auth{
+.camera_auth {
   width: 100%;
   height: 85vh;
   position: absolute;
 }
 
-.auth_bg{
+.auth_bg {
   height: 100%;
   width: 100%;
 }

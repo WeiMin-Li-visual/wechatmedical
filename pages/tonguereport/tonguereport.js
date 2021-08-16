@@ -8,18 +8,16 @@ Page({
         imagelist: ["/static/image/healthknos/healthhkno1.jpg", "/static/image/healthknos/healthhkno1.jpg"],
 
         navData: [{
-                text: '表征分析'
-            },
-            {
-                text: '调理建议'
-            },
-        ],
+            text: '表征分析'
+        }, {
+            text: '调理建议'
+        }],
 
         report: [{
                 tongue_proper_color: app.globalData.tonguefeature
             },
             {
-                suggest: "请按医生指导进行调理"
+                suggest: "对照表征分析进行调理"
             },
         ],
         currentTab: 0,
@@ -67,23 +65,55 @@ Page({
         } else {
             tongue_color_index = app.globalData.tonguefeature[0][1];
         }
+
         // 舌型索引
+        var temp_tongue_shape_index = [];
         if (app.globalData.tonguefeature[1][0] > app.globalData.tonguefeature[1][1]) {
-            tongue_shape_index = app.globalData.tonguefeature[1][0];
+            temp_tongue_shape_index[0] = app.globalData.tonguefeature[1][0];
         } else {
-            tongue_shape_index = app.globalData.tonguefeature[1][1];
+            temp_tongue_shape_index[0] = app.globalData.tonguefeature[1][1];
         }
-        if (app.globalData.tonguefeature[2][0] > tongue_shape_index) {
-            tongue_shape_index = app.globalData.tonguefeature[2][0];
+        if (app.globalData.tonguefeature[2][0] > app.globalData.tonguefeature[2][1]) {
+            temp_tongue_shape_index[1] = app.globalData.tonguefeature[2][0];
+        } else {
+            temp_tongue_shape_index[1] = app.globalData.tonguefeature[2][1];
         }
-        if (app.globalData.tonguefeature[2][1] > tongue_shape_index) {
-            tongue_shape_index = app.globalData.tonguefeature[2][1];
+        if (app.globalData.tonguefeature[3][0] > app.globalData.tonguefeature[3][1]) {
+            temp_tongue_shape_index[3] = app.globalData.tonguefeature[3][0];
+        } else {
+            temp_tongue_shape_index[2] = app.globalData.tonguefeature[3][1];
+        } 
+        // 000
+        if(temp_tongue_shape_index[0]==0&&temp_tongue_shape_index[1]==0&&temp_tongue_shape_index[2]==0){
+            tongue_shape_index=0;
         }
-        if (app.globalData.tonguefeature[3][0] > tongue_shape_index) {
-            tongue_shape_index = app.globalData.tonguefeature[3][0];
+        //100
+        if(temp_tongue_shape_index[0]==1&&temp_tongue_shape_index[1]==0&&temp_tongue_shape_index[2]==0){
+            tongue_shape_index=1;
         }
-        if (app.globalData.tonguefeature[3][1] > tongue_shape_index) {
-            tongue_shape_index = app.globalData.tonguefeature[3][1];
+        //020
+        if(temp_tongue_shape_index[0]==0&&temp_tongue_shape_index[1]==2&&temp_tongue_shape_index[2]==0){
+            tongue_shape_index=2;
+        }
+        //003
+        if(temp_tongue_shape_index[0]==0&&temp_tongue_shape_index[1]==0&&temp_tongue_shape_index[2]==3){
+            tongue_shape_index=3;
+        }
+        //023
+        if(temp_tongue_shape_index[0]==0&&temp_tongue_shape_index[1]==2&&temp_tongue_shape_index[2]==3){
+            tongue_shape_index=4;
+        }
+        //103
+        if(temp_tongue_shape_index[0]==1&&temp_tongue_shape_index[1]==0&&temp_tongue_shape_index[2]==3){
+            tongue_shape_index=5;
+        }
+        //120
+        if(temp_tongue_shape_index[0]==1&&temp_tongue_shape_index[1]==2&&temp_tongue_shape_index[2]==0){
+            tongue_shape_index=6;
+        }
+        //123
+        if(temp_tongue_shape_index[0]==1&&temp_tongue_shape_index[1]==2&&temp_tongue_shape_index[2]==3){
+            tongue_shape_index=7;
         }
 
         // 舌苔色索引
@@ -95,17 +125,9 @@ Page({
 
         // 舌苔质索引
         if (app.globalData.tonguefeature[5][0] > app.globalData.tonguefeature[5][1]) {
-            if (app.globalData.tonguefeature[5][0] == 2) {
-                tongue_moss_nature_index = 0;
-            } else {
-                tongue_moss_nature_index = app.globalData.tonguefeature[5][0];
-            }
+            tongue_moss_nature_index = app.globalData.tonguefeature[5][0];
         } else {
-            if (app.globalData.tonguefeature[5][0] == 2) {
-                tongue_moss_nature_index = 0;
-            } else {
-                tongue_moss_nature_index = app.globalData.tonguefeature[5][1];
-            }
+            tongue_moss_nature_index = app.globalData.tonguefeature[5][1];
         }
 
         this.setData({
@@ -119,14 +141,21 @@ Page({
         });
     },
 
-    onUnload:function () {
+    onUnload: function () {
         app.globalData.imagecount = 0;
-        app.globalData.mHidden=false;
-        app.globalData.imagelist=[];
-        app.globalData.tonguefeature=[[],[],[],[],[],[]];
-    
+        app.globalData.mHidden = false;
+        app.globalData.imagelist = [];
+        app.globalData.tonguefeature = [
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ];
+
         wx.reLaunch({
-          url: '/pages/index/index',
+            url: '/pages/index/index',
         });
     }
 })

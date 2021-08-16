@@ -50,6 +50,8 @@
     "hidedInDevtools": []
   },
   "scripts": {},
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {
     "plugin": {
       "list": []

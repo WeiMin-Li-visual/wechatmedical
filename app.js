@@ -8,6 +8,7 @@ App({
   },
 
   globalData: {
+    isUse:false,  // 面诊和手诊开发中，完成就变true
     userInfo: {},
     hasUserInfo: false,
     imagelist: [], 

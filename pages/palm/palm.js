@@ -75,7 +75,7 @@ Page({
           // url: 'http://127.0.0.1:5000/palm/uploadimage', 
 
           // 实验室服务器地址
-          url: 'http://58.199.160.140:9200/palm/uploadimage',
+          url: 'https://www.lib61504.top:9200/palm/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
@@ -157,7 +157,7 @@ Page({
           // url: 'http://127.0.0.1:5000/palm/uploadimage', 
 
           // 实验室服务器地址
-          url: 'http://58.199.160.140:9200/palm/uploadimage',
+          url: 'https://www.lib61504.top:9200/palm/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
@@ -277,6 +277,7 @@ Page({
   
   onLoad: function () {
     this.setData({
+      isUse:app.globalData.isUse, 
       palmimagelist: app.globalData.palmimagelist, // 保存用户拍的两张照片
       count: app.globalData.palmcount,
       mHidden: app.globalData.palmmHidden, // 拍照提示是否隐藏

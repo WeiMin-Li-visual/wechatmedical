@@ -3,6 +3,38 @@ page {
   background-color: #edece8;
 }
 
+.wait_wrp {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.wait_image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.wait_text {
+  position: absolute;
+  left: 36%;
+  transform: translate(-30%, -36%);
+  top: 50%;
+  color: greenyellow;
+  font-size: 40rpx;
+}
+
+.wait_text1 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 55%;
+  color: greenyellow;
+  font-size: 40rpx;
+}
+
+
 .notice_image{
   width: 100%;
   height: 400rpx;

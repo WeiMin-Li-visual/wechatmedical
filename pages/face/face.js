@@ -75,7 +75,7 @@ Page({
           // url: 'http://127.0.0.1:5000/face/uploadimage', 
 
           // 实验室服务器地址
-          url: 'http://58.199.160.140:9200/face/uploadimage',
+          url: 'https://www.lib61504.top:9200/face/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
@@ -140,7 +140,7 @@ Page({
           // url: 'http://127.0.0.1:5000/face/uploadimage', 
 
           // 实验室服务器地址
-          url: 'http://58.199.160.140:9200/face/uploadimage',
+          url: 'https://www.lib61504.top:9200/face/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
@@ -230,6 +230,7 @@ Page({
 
   onShow: function () {
     this.setData({
+      isUse:app.globalData.isUse, 
       faceimagelist: app.globalData.faceimagelist, // 保存用户拍的两张照片
       count: app.globalData.facecount,
       mHidden: app.globalData.facemHidden, // 拍照提示是否隐藏

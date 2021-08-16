@@ -1,72 +1,80 @@
-<!-- 页面提示弹窗 -->
-<view>
-  <modal title="拍摄注意事项" cancel-text="关闭" hidden="{{mHidden}}" confirm-text="确定" bindconfirm="confirmModel"
-    bindcancel="closeModel">
-    <view>
-      <image class="notice_image" src="/static/image/notice_palm.jpg"></image>
-      <view class="notice_text">拍照保证光线充足，关闭美颜</view>
-    </view>
-  </modal>
+<view wx:if="{{isUse==false}}" class="wait_wrp">
+  <image class="wait_image" src="/static/image/profile/bg_profile.png"></image>
+  <text class="wait_text">工程“狮”们正在加紧开发</text>
+  <text class="wait_text1">敬请期待</text>
 </view>
 
-<!-- 上传状态信息弹框 -->
-<view>
-  <modal title="提示" cancel-text="关闭" hidden="{{upload_status}}" confirm-text="确定" bindconfirm="failfun"
-    bindcancel="notongue">
-    <view>
-      <view class="notice_text">{{upload_dic}}</view>
-    </view>
-  </modal>
-</view>
+<view wx:else>
+  <!-- 页面提示弹窗 -->
+  <view>
+    <modal title="拍摄注意事项" cancel-text="关闭" hidden="{{mHidden}}" confirm-text="确定" bindconfirm="confirmModel"
+      bindcancel="closeModel">
+      <view>
+        <image class="notice_image" src="/static/image/notice_palm.jpg"></image>
+        <view class="notice_text">拍照保证光线充足，关闭美颜</view>
+      </view>
+    </modal>
+  </view>
 
-<!-- 上传弹窗 -->
-<!-- <view wx:if="{{uploadHidden==false}}">
+  <!-- 上传状态信息弹框 -->
+  <view>
+    <modal title="提示" cancel-text="关闭" hidden="{{upload_status}}" confirm-text="确定" bindconfirm="failfun"
+      bindcancel="notongue">
+      <view>
+        <view class="notice_text">{{upload_dic}}</view>
+      </view>
+    </modal>
+  </view>
+
+  <!-- 上传弹窗 -->
+  <!-- <view wx:if="{{uploadHidden==false}}">
   <image class="notice_image" src="/static/image/notice_tongue.jpg"></image>
 </view>  -->
 
-<view class="container">
-  <view class="camera_container">
-    <view wx:if="{{authCamera}}" class="camera_wrp">
-      <camera binderror="handleCameraError" device-position="{{devicePosition}}" flash="{{flash}}">
-        <view wx:if="{{imagecount==0}}" class='cover_view'>
-          <image class="outline" src="/static/image/outline/left_palm.png"></image>
-          <view class='cover_text'>拍摄左手照片</view>
+  <view class="container">
+    <view class="camera_container">
+      <view wx:if="{{authCamera}}" class="camera_wrp">
+        <camera binderror="handleCameraError" device-position="{{devicePosition}}" flash="{{flash}}">
+          <view wx:if="{{imagecount==0}}" class='cover_view'>
+            <image class="outline" src="/static/image/outline/left_palm.png"></image>
+            <view class='cover_text'>拍摄左手照片</view>
 
-          <view wx:if="{{uploadHidden==false}}">
-            <image class="upload_image" src="/static/image/upload.gif"></image>
-            <view class="upload_text">正在诊断</view>
+            <view wx:if="{{uploadHidden==false}}">
+              <image class="upload_image" src="/static/image/upload.gif"></image>
+              <view class="upload_text">正在诊断</view>
+            </view>
           </view>
-        </view>
-        <view wx:if="{{imagecount==1}}" class='cover_view'>
-          <image class="outline" src="/static/image/outline/right_palm.png"></image>
-          <view class='cover_text'>拍摄右手照片</view>
+          <view wx:if="{{imagecount==1}}" class='cover_view'>
+            <image class="outline" src="/static/image/outline/right_palm.png"></image>
+            <view class='cover_text'>拍摄右手照片</view>
 
-          <view wx:if="{{uploadHidden==false}}">
-            <image class="upload_image" src="/static/image/upload.gif"></image>
-            <view class="upload_text">正在诊断</view>
+            <view wx:if="{{uploadHidden==false}}">
+              <image class="upload_image" src="/static/image/upload.gif"></image>
+              <view class="upload_text">正在诊断</view>
+            </view>
           </view>
+        </camera>
+      </view>
+      <view class="camera_auth" wx:if="{{!authCamera}}">
+        <image class="auth_bg" src="/static/image/profile/bg_profile.png"></image>
+        <button class="auth_btn" plain bindtap="getCameraSetting"> 用户相机授权 </button>
+        <!-- <navigator url="/pages/cameraauth/cameraauth">点击进行相机授权</navigator> -->
+      </view>
+    </view>
+
+    <view class="menu_container">
+      <view class="menu_content">
+        <view class="menu_view" bindtap="chooseImage">
+          <view class="album_icon iconfont icon-xiangce"></view>
         </view>
-      </camera>
-    </view>
-    <view class="camera_auth" wx:if="{{!authCamera}}">
-      <image class="auth_bg" src="/static/image/profile/bg_profile.png"></image>
-      <button class="auth_btn" plain bindtap="getCameraSetting"> 用户相机授权 </button>
-      <!-- <navigator url="/pages/cameraauth/cameraauth">点击进行相机授权</navigator> -->
-    </view>
-  </view>
 
-  <view class="menu_container">
-    <view class="menu_content">
-      <view class="menu_view" bindtap="chooseImage">
-        <view class="album_icon iconfont icon-xiangce"></view>
-      </view>
+        <view class="menu_view" bindtap="takePhoto">
+          <view class="photo_icon iconfont icon-paizhao1-copy"></view>
+        </view>
 
-      <view class="menu_view" bindtap="takePhoto">
-        <view class="photo_icon iconfont icon-paizhao1-copy"></view>
-      </view>
-
-      <view class="menu_view" bindtap="reverseCamera">
-        <view class="xuanzhuan_icon iconfont icon-raoxiangjixuanzhuan-copy"></view>
+        <view class="menu_view" bindtap="reverseCamera">
+          <view class="xuanzhuan_icon iconfont icon-raoxiangjixuanzhuan-copy"></view>
+        </view>
       </view>
     </view>
   </view>

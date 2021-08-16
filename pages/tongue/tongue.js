@@ -79,7 +79,8 @@ Page({
           // url: 'http://127.0.0.1:5000/tongue/uploadimage',  
 
           // 实验室服务器地址
-          url: 'http://118.31.76.165:9200/tongue/uploadimage',
+          url: 'https://www.lib61504.top:9200/tongue/uploadimage',
+          // url: 'http://118.31.76.165:9200/tongue/uploadimage',
 
           filePath: String(pic),
           name: 'image',
@@ -179,7 +180,7 @@ Page({
           // url: 'http://58.199.160.140:9200/tongue/uploadimage',
 
           // 云实验室服务器地址
-          url: 'https:www.lib61504.top:9200/tongue/uploadimage',
+          url: 'https://www.lib61504.top:9200/tongue/uploadimage',
           // url: 'https://118.31.76.165:9200/tongue/uploadimage',
           filePath: String(pic),
           name: 'image',
