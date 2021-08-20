@@ -5,7 +5,7 @@ var config = require("../../config.js");
 
 Page({
     data: {
-        imagelist: ["/static/image/healthknos/healthhkno1.jpg", "/static/image/healthknos/healthhkno1.jpg"],
+        imagelist: ["/static/image/healthknos/healthhkno1.jpg"],
 
         navData: [{
             text: '表征分析'
@@ -60,29 +60,33 @@ Page({
         var tongue_moss_color_index = 0;
         var tongue_moss_nature_index = 0;
         // 舌色索引
-        if (app.globalData.tonguefeature[0][0] > app.globalData.tonguefeature[0][1]) {
-            tongue_color_index = app.globalData.tonguefeature[0][0];
-        } else {
-            tongue_color_index = app.globalData.tonguefeature[0][1];
-        }
+        tongue_color_index = app.globalData.tonguefeature[0][0];
+        // if (app.globalData.tonguefeature[0][0] > app.globalData.tonguefeature[0][1]) {
+        //     tongue_color_index = app.globalData.tonguefeature[0][0];
+        // } else {
+        //     tongue_color_index = app.globalData.tonguefeature[0][1];
+        // }
 
         // 舌型索引
         var temp_tongue_shape_index = [];
-        if (app.globalData.tonguefeature[1][0] > app.globalData.tonguefeature[1][1]) {
-            temp_tongue_shape_index[0] = app.globalData.tonguefeature[1][0];
-        } else {
-            temp_tongue_shape_index[0] = app.globalData.tonguefeature[1][1];
-        }
-        if (app.globalData.tonguefeature[2][0] > app.globalData.tonguefeature[2][1]) {
-            temp_tongue_shape_index[1] = app.globalData.tonguefeature[2][0];
-        } else {
-            temp_tongue_shape_index[1] = app.globalData.tonguefeature[2][1];
-        }
-        if (app.globalData.tonguefeature[3][0] > app.globalData.tonguefeature[3][1]) {
-            temp_tongue_shape_index[3] = app.globalData.tonguefeature[3][0];
-        } else {
-            temp_tongue_shape_index[2] = app.globalData.tonguefeature[3][1];
-        } 
+        temp_tongue_shape_index[0] = app.globalData.tonguefeature[1][0];
+        temp_tongue_shape_index[1] = app.globalData.tonguefeature[2][0];
+        temp_tongue_shape_index[3] = app.globalData.tonguefeature[3][0];
+        // if (app.globalData.tonguefeature[1][0] > app.globalData.tonguefeature[1][1]) {
+        //     temp_tongue_shape_index[0] = app.globalData.tonguefeature[1][0];
+        // } else {
+        //     temp_tongue_shape_index[0] = app.globalData.tonguefeature[1][1];
+        // }
+        // if (app.globalData.tonguefeature[2][0] > app.globalData.tonguefeature[2][1]) {
+        //     temp_tongue_shape_index[1] = app.globalData.tonguefeature[2][0];
+        // } else {
+        //     temp_tongue_shape_index[1] = app.globalData.tonguefeature[2][1];
+        // }
+        // if (app.globalData.tonguefeature[3][0] > app.globalData.tonguefeature[3][1]) {
+        //     temp_tongue_shape_index[3] = app.globalData.tonguefeature[3][0];
+        // } else {
+        //     temp_tongue_shape_index[2] = app.globalData.tonguefeature[3][1];
+        // } 
         // 000
         if(temp_tongue_shape_index[0]==0&&temp_tongue_shape_index[1]==0&&temp_tongue_shape_index[2]==0){
             tongue_shape_index=0;
@@ -117,18 +121,20 @@ Page({
         }
 
         // 舌苔色索引
-        if (app.globalData.tonguefeature[4][0] > app.globalData.tonguefeature[4][1]) {
-            tongue_moss_color_index = app.globalData.tonguefeature[4][0];
-        } else {
-            tongue_moss_color_index = app.globalData.tonguefeature[4][1];
-        }
+        tongue_moss_color_index = app.globalData.tonguefeature[4][0];
+        // if (app.globalData.tonguefeature[4][0] > app.globalData.tonguefeature[4][1]) {
+        //     tongue_moss_color_index = app.globalData.tonguefeature[4][0];
+        // } else {
+        //     tongue_moss_color_index = app.globalData.tonguefeature[4][1];
+        // }
 
         // 舌苔质索引
-        if (app.globalData.tonguefeature[5][0] > app.globalData.tonguefeature[5][1]) {
-            tongue_moss_nature_index = app.globalData.tonguefeature[5][0];
-        } else {
-            tongue_moss_nature_index = app.globalData.tonguefeature[5][1];
-        }
+        tongue_moss_nature_index = app.globalData.tonguefeature[5][0];
+        // if (app.globalData.tonguefeature[5][0] > app.globalData.tonguefeature[5][1]) {
+        //     tongue_moss_nature_index = app.globalData.tonguefeature[5][0];
+        // } else {
+        //     tongue_moss_nature_index = app.globalData.tonguefeature[5][1];
+        // }
 
         this.setData({
             imagelist: app.globalData.imagelist, // 保存用户拍的两张照片

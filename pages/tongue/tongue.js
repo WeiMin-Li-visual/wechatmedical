@@ -35,7 +35,7 @@ Page({
   failfun: function () {
     app.globalData.mHidden = this.data.mHidden;
     app.globalData.imagecount = this.data.imagecount;
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/tongue/tongue',
     });
   },
@@ -61,7 +61,7 @@ Page({
   takePhoto: function () {
     var that = this;
     wx.createCameraContext().takePhoto({
-      quality: 'high', //拍摄质量(high:高质量 normal:普通质量 low:高质量)  
+      quality: 'low', //拍摄质量(high:高质量 normal:普通质量 low:高质量)  
       success: (res) => {
         // 拍摄成功，显示正在上传，禁用相机
         that.setData({
@@ -103,37 +103,50 @@ Page({
             else {
               app.globalData.imagelist = that.data.imagelist.concat(pic) // 保存图片
               app.globalData.mHidden = true
-              if (that.data.imagecount == 0) {
-                that.setData({
-                  imagecount: 1,
-                })
-                app.globalData.imagecount = that.data.imagecount
-                app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
-                app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
-                app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
-                app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
-                app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
-                app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
-                wx.navigateTo({
-                  url: '/pages/tongue/tongue',
-                })
-              }
-              // 分析结果并跳转到结果界面
-              else if (that.data.imagecount == 1) {
-                that.setData({
-                  imagecount: 0,
-                })
-                app.globalData.imagecount = that.data.imagecount
-                app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
-                app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
-                app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
-                app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
-                app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
-                app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
-                wx.navigateTo({
-                  url: '/pages/tonguereport/tonguereport', // 这里跳转到结果界面
-                })
-              }
+
+              app.globalData.imagecount = that.data.imagecount
+              app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
+              app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
+              app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
+              app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
+              app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
+              app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
+              wx.navigateTo({
+                url: '/pages/tonguereport/tonguereport', // 这里跳转到结果界面
+              })
+
+
+              // if (that.data.imagecount == 0) {
+              //   that.setData({
+              //     imagecount: 1,
+              //   })
+              //   app.globalData.imagecount = that.data.imagecount
+              //   app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
+              //   app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
+              //   app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
+              //   app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
+              //   app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
+              //   app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
+              //   wx.navigateTo({
+              //     url: '/pages/tongue/tongue',
+              //   })
+              // }
+              // // 分析结果并跳转到结果界面
+              // else if (that.data.imagecount == 1) {
+              //   that.setData({
+              //     imagecount: 0,
+              //   })
+              //   app.globalData.imagecount = that.data.imagecount
+              //   app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
+              //   app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
+              //   app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
+              //   app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
+              //   app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
+              //   app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
+              //   wx.navigateTo({
+              //     url: '/pages/tonguereport/tonguereport', // 这里跳转到结果界面
+              //   })
+              // }
             }
           },
           fail: function (t) {
@@ -159,7 +172,8 @@ Page({
     var that = this;
     wx.chooseImage({
       count: 1, // 最多选择多少张
-      sizeType: ['original', 'compressed'], // 大小，是否原图
+      // sizeType: ['original', 'compressed'], // 大小，是否原图
+      sizeType: ['compressed'], // 大小，是否原图
       // sourceType: ['album', 'camera'], //相册或相机获取
       sourceType: ['album'],
       success: function (res) {
@@ -191,6 +205,7 @@ Page({
             });
 
             var report = JSON.parse(e.data);
+
             // 没有检测到舌头
             if (report["tongue_exist"] == 0) {
               that.setData({
@@ -201,40 +216,56 @@ Page({
 
             // 检测到舌头
             else {
+              // var image=report["tongue_crop_img_stream"]
+              // console.log(typeof(image))
+
               app.globalData.imagelist = that.data.imagelist.concat(pic) // 保存图片
+              // app.globalData.imagelist = that.data.imagelist.concat(image) // 保存切出来的图片
               app.globalData.mHidden = true
-              if (that.data.imagecount == 0) {
-                that.setData({
-                  imagecount: 1,
-                  
-                })
-                app.globalData.imagecount = that.data.imagecount
-                app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
-                app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
-                app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
-                app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
-                app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
-                app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
-                wx.navigateTo({
-                  url: '/pages/tongue/tongue',
-                })
-              }
-              // 分析结果并跳转到结果界面
-              else if (that.data.imagecount == 1) {
-                that.setData({
-                  imagecount: 0,
-                })
-                app.globalData.imagecount = that.data.imagecount
-                app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
-                app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
-                app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
-                app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
-                app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
-                app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
-                wx.navigateTo({
-                  url: '/pages/tonguereport/tonguereport', // 这里跳转到结果界面
-                })
-              }
+
+              app.globalData.imagecount = that.data.imagecount
+              app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
+              app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
+              app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
+              app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
+              app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
+              app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
+              wx.navigateTo({
+                url: '/pages/tonguereport/tonguereport', // 这里跳转到结果界面
+              })
+
+              // if (that.data.imagecount == 0) {
+              //   that.setData({
+              //     imagecount: 1,
+
+              //   })
+              //   app.globalData.imagecount = that.data.imagecount
+              //   app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
+              //   app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
+              //   app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
+              //   app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
+              //   app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
+              //   app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
+              //   wx.navigateTo({
+              //     url: '/pages/tongue/tongue',
+              //   })
+              // }
+              // // 分析结果并跳转到结果界面
+              // else if (that.data.imagecount == 1) {
+              //   that.setData({
+              //     imagecount: 0,
+              //   })
+              //   app.globalData.imagecount = that.data.imagecount
+              //   app.globalData.tonguefeature[0] = that.data.feature[0].concat(report["tongue_proper_color"])
+              //   app.globalData.tonguefeature[1] = that.data.feature[1].concat(report["tongue_shape_pang"])
+              //   app.globalData.tonguefeature[2] = that.data.feature[2].concat(report["tongue_shape_neng"])
+              //   app.globalData.tonguefeature[3] = that.data.feature[3].concat(report["tongue_shape_chi"])
+              //   app.globalData.tonguefeature[4] = that.data.feature[4].concat(report["tongue_moss_color"])
+              //   app.globalData.tonguefeature[5] = that.data.feature[5].concat(report["tongue_moss_nature"])
+              //   wx.navigateTo({
+              //     url: '/pages/tonguereport/tonguereport', // 这里跳转到结果界面
+              //   })
+              // }
             }
           },
           fail: function (t) {

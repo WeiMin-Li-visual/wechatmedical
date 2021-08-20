@@ -18,7 +18,7 @@ page {
 .image_container {
   width: 180rpx;
   height: 180rpx;
-  padding: 10%;
+  padding: 5%;
 }
 
 .text_report {

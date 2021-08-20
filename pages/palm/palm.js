@@ -35,7 +35,7 @@ Page({
   failfun: function () {
     app.globalData.mHidden = this.data.mHidden;
     app.globalData.imagecount = this.data.imagecount;
-    wx.navigateTo({
+    wx.reLaunch({
       url: '/pages/palm/palm',
     });
   },
