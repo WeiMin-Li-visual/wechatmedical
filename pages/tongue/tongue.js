@@ -76,10 +76,10 @@ Page({
         var pic = res.tempImagePath;
         wx.uploadFile({
           // 本地地址
-          // url: 'http://127.0.0.1:5000/tongue/uploadimage',  
+          url: 'http://127.0.0.1:5000/tongue/uploadimage',  
 
           // 实验室服务器地址
-          url: 'https://www.lib61504.top:9200/tongue/uploadimage',
+          // url: 'https://www.lib61504.top:9200/tongue/uploadimage',
           // url: 'http://118.31.76.165:9200/tongue/uploadimage',
 
           filePath: String(pic),
@@ -176,7 +176,7 @@ Page({
         console.log(pic)
         wx.uploadFile({
           // 本地地址
-          // url: 'http://127.0.0.1:5000/tongue/uploadimage', 
+          // url: 'http://127.0.0.1:9200/tongue/uploadimage', 
           // url: 'http://58.199.160.140:9200/tongue/uploadimage',
 
           // 云实验室服务器地址

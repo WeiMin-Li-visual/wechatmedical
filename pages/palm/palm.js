@@ -154,10 +154,10 @@ Page({
         console.log(pic)
         wx.uploadFile({
           // 本地地址
-          // url: 'http://127.0.0.1:5000/palm/uploadimage', 
+          url: 'http://127.0.0.1:5000/palm/uploadimage', 
 
           // 实验室服务器地址
-          url: 'https://www.lib61504.top:9200/palm/uploadimage',
+          // url: 'https://www.lib61504.top:9200/palm/uploadimage',
           filePath: String(pic),
           name: 'image',
           success: function (e) {
