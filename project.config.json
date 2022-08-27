@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": false,
     "enhance": true,
     "postcss": true,
@@ -39,7 +39,7 @@
     "showES6CompileOption": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.18.1",
+  "libVersion": "2.19.1",
   "appid": "wx19db85d4ebc13b71",
   "projectname": "wechatmedical",
   "cloudfunctionTemplateRoot": "",
